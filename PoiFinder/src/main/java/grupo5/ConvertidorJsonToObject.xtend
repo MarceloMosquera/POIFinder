@@ -25,12 +25,13 @@ class ConvertidorJsonToObject{
 		 	 var int y = bank.asObject().getInt("y", 1)
 		 	 var String sucursal = bank.asObject().getString("Sucursal", "Unknown Item")
 		 	 var String gerente = bank.asObject().getString("Gerente", "Unknown Item")
+		 	 var String direccion = bank.asObject().getString("Direccion", "Unknown Item")
 		 	 var JsonArray servicios = bank.asObject().get("Servicios").asArray()
 				  for (var int i=0; i<servicios.size(); i++) {
 		    		servicio.add( servicios.get(i).toString );
 					}
 		   
-		  listaBancos.add(new Banco(name,Point.and(x,y),sucursal,gerente,servicio))
+		  listaBancos.add(new Banco(name,Point.and(x,y),sucursal,gerente,servicio,direccion))
 			}
 	}
 

@@ -10,6 +10,7 @@ import org.uqbar.commons.utils.TransactionalAndObservable
 @TransactionalAndObservable
 class Local extends Iop {
 	var String categoria
+	String direccion
 	List<String> palabrasClaves = new ArrayList
 
 	new(Point coordenadas, double minimaDistancia) {
@@ -19,10 +20,11 @@ class Local extends Iop {
 	new(String _nombre) {
 		nombre = _nombre
 	}
-	new(String _nombre,List<String> claves,String _categoria,Point coordenadas){
+	new(String _nombre,List<String> claves,String _categoria,Point coordenadas, String dir){
 		nombre=_nombre
 		palabrasClaves=claves
 		categoria=_categoria
+		direccion=dir
 		coordenada=coordenadas
 	}
 	

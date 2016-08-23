@@ -11,9 +11,9 @@ class BuilderIop
 	//Representa el objeto complejo a construir.
 	//Colectivo c
 	
-	def crearBanco(String _nombre, Point _coordenada,String sucursal,String _gerente,List<String> _servicio)
+	def crearBanco(String _nombre, Point _coordenada,String sucursal,String _gerente,List<String> _servicio, String dir)
 	{
-		var Banco ban = new Banco(_nombre, _coordenada,sucursal,_gerente, _servicio)
+		var Banco ban = new Banco(_nombre, _coordenada,sucursal,_gerente, _servicio, dir)
 		lista.add(ban)
 		this
 	}
@@ -28,11 +28,12 @@ class BuilderIop
 	
 	
 	//def Local((Point coordenadas, double minimaDistancia,String _nombre)
-	def crearLocal(String _nombre,List<String> claves,String categoria,Point coordenadas)
+	def crearLocal(String _nombre,List<String> claves,String categoria,Point coordenadas,String dir)
 	{
 		
 		var Local local = new Local(_nombre)
 		local.categoria=categoria
+		local.direccion=dir
 		local.coordenada=coordenadas
 		local.palabrasClaves=claves
 		lista.add(local)

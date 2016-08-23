@@ -13,18 +13,20 @@ class Banco extends Iop {
 	List<String> diasAtencion = newArrayList("Lunes", "Martes", "Miercoles", "Jueves", "Viernes")
 	double distanciaMinCercania=0.5
 	String gerente
+	String direccion
 	List<String> servicio = new ArrayList<String>
 	
 	new()
 	{
 		horarios = new Horario(10, 00, 15, 00)
 	}
-	new(String _nombre, Point _coordenada,String sucursal,String _gerente,List<String> _servicio){
+	new(String _nombre, Point _coordenada,String sucursal,String _gerente,List<String> _servicio, String dir){
 		nombre=_nombre
 		coordenada = _coordenada
 		barrio = sucursal
 		gerente = _gerente
 		servicio=_servicio
+		direccion= dir
 		horarios = new Horario(10, 00, 15, 00)
 	}
 	new(String _nombre) {
