@@ -9,4 +9,5 @@ class BaseAppModel {
 		ApplicationContext.instance.getSingleton(typeof(Repo))
 	}
 	
+	//prueba jahesa
 }
