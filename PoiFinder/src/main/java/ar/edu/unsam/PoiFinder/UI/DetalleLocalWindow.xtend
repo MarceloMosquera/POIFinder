@@ -14,6 +14,7 @@ class DetalleLocalWindow  extends DetallePoiWindow {
 	
 	override createChildPanel(Panel detPanel)
 	{
+		this.title = "Local"
 		val local = modelObject.poi as Local
 		new Label(detPanel).text = "Direccion"
 		new Label(detPanel).text = local.direccion

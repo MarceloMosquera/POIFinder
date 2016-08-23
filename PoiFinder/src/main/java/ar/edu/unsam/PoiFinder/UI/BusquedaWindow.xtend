@@ -15,6 +15,7 @@ import org.uqbar.arena.windows.WindowOwner
 
 import static extension org.uqbar.arena.xtend.ArenaXtendExtensions.*
 import grupo5.Banco
+import grupo5.Cgp
 
 class BusquedaWindow extends SimpleWindow<BusquedaAppModel> {
 
@@ -47,7 +48,7 @@ class BusquedaWindow extends SimpleWindow<BusquedaAppModel> {
 			]
 			new Button(it) => [
 				caption = "Buscar"
-				 onClick([|modelObject.search])
+				onClick([|modelObject.search])
 			]
 
 			new Label(it).text = "Resultados"
@@ -75,27 +76,26 @@ class BusquedaWindow extends SimpleWindow<BusquedaAppModel> {
 		]
 
 	}
-	
-	def verDetalle()
-	{
+
+	def verDetalle() {
 		openDialog(getDetalleWindow(modelObject.poiSeleccionado))
 	}
-	def dispatch getDetalleWindow(Local poi)
-	{
+
+	def dispatch getDetalleWindow(Local poi) {
 		new DetalleLocalWindow(this, poi)
 	}
-//	def dispatch getDetalleWindow(Iop poi)
-//	{
-//		new DetallePoiWindow(this, poi)
-//	}
-	def dispatch getDetalleWindow(Banco poi){
-		new DetalleBancoWindow(this,poi)
-	}
-	def dispatch getDetalleWindow(Iop poi)
-	{
+
+	def dispatch getDetalleWindow(Iop poi) {
 		new DetallePoiWindow(this, poi)
 	}
-	
+	def dispatch getDetalleWindow(Banco poi) {
+		new DetalleBancoWindow(this, poi)
+	}
+
+	def dispatch getDetalleWindow(Cgp poi) {
+		new DetalleCgpWindow(this, poi)
+	}
+
 	def openDialog(Dialog<?> dialog) {
 		dialog.onAccept[|modelObject.search]
 		dialog.open

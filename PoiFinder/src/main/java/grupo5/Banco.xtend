@@ -11,34 +11,34 @@ import org.uqbar.commons.utils.TransactionalAndObservable
 class Banco extends Iop {
 
 	List<String> diasAtencion = newArrayList("Lunes", "Martes", "Miercoles", "Jueves", "Viernes")
-	double distanciaMinCercania=0.5
+	double distanciaMinCercania = 0.5
 	String gerente
 	String direccion
 	List<String> servicio = new ArrayList<String>
-	
-	new()
-	{
+
+	new() {
 		horarios = new Horario(10, 00, 15, 00)
 	}
-	new(String _nombre, Point _coordenada,String sucursal,String _gerente,List<String> _servicio, String dir){
-		nombre=_nombre
+
+	new(String _nombre, Point _coordenada, String sucursal, String _gerente, List<String> _servicio, String dir) {
+		nombre = _nombre
 		coordenada = _coordenada
 		barrio = sucursal
 		gerente = _gerente
-		servicio=_servicio
-		direccion= dir
+		servicio = _servicio
+		direccion = dir
 		horarios = new Horario(10, 00, 15, 00)
 	}
+
 	new(String _nombre) {
 		nombre = _nombre
 	}
-	
+
 	new(Point punto) {
 		coordenada = punto
 	}
-	
-	def agregarServicio(String unServicio)
-	{
+
+	def agregarServicio(String unServicio) {
 		servicio.add(unServicio)
 	}
 
@@ -46,13 +46,12 @@ class Banco extends Iop {
 		diasAtencion.add(dia)
 	}
 
-	
 	override estaAbierto(String nombre, String dia, int hora, int minuto) {
 		(horarios.checkHora(hora, minuto) && diasAtencion.contains(dia))
 	}
-	
-	def getnombre(){
+
+	def getnombre() {
 		nombre
 	}
-	
+
 }
