@@ -15,6 +15,7 @@ import org.uqbar.arena.windows.WindowOwner
 
 import static extension org.uqbar.arena.xtend.ArenaXtendExtensions.*
 import grupo5.Banco
+import grupo5.Colectivo
 
 class BusquedaWindow extends SimpleWindow<BusquedaAppModel> {
 
@@ -95,6 +96,12 @@ class BusquedaWindow extends SimpleWindow<BusquedaAppModel> {
 	{
 		new DetallePoiWindow(this, poi)
 	}
+	
+	def dispatch getDetalleWindow(Colectivo poi)
+	{
+		new DetalleColectivoWindow(this, poi)
+	}
+	
 	
 	def openDialog(Dialog<?> dialog) {
 		dialog.onAccept[|modelObject.search]
