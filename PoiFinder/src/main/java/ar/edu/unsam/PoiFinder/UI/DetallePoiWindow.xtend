@@ -10,6 +10,8 @@ import org.uqbar.arena.windows.WindowOwner
 import org.apache.commons.collections15.Transformer
 import org.uqbar.arena.graphics.Image
 import grupo5.Colectivo
+import grupo5.Cgp
+import grupo5.Banco
 
 class DetallePoiWindow  extends Dialog<DetallePoiAppModel> {
 	
@@ -32,7 +34,9 @@ class DetallePoiWindow  extends Dialog<DetallePoiAppModel> {
 		new Label(detPanel).bindImageToProperty("poi", new Transformer<Iop, Image>() {
 			override transform(Iop poi) {
 				if (poi instanceof Colectivo ) new Image("bus.png")
-				else new Image("bank.png")
+				else if (poi instanceof Cgp ) new  Image("cgp.png")
+				else if (poi instanceof Banco) new Image("bank.png")
+				else (new Image("local.png"))
 			}
 		}) 
 		
