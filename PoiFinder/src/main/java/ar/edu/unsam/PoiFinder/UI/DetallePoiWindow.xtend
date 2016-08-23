@@ -13,7 +13,7 @@ import grupo5.Colectivo
 import grupo5.Cgp
 import grupo5.Banco
 
-class DetallePoiWindow  extends Dialog<DetallePoiAppModel> {
+ abstract class DetallePoiWindow  extends Dialog<DetallePoiAppModel> {
 	
 	new(WindowOwner parent, Iop poi) {
 		super(parent, new DetallePoiAppModel(poi))

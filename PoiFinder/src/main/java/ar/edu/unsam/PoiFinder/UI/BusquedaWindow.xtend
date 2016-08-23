@@ -34,7 +34,7 @@ class BusquedaWindow extends SimpleWindow<BusquedaAppModel> {
 	}
 
 	override protected createFormPanel(Panel mainPanel) {
-		this.title = "Búsqueda de puntos de interes"
+		this.title = "Busqueda de puntos de interes"
 
 		new Panel(mainPanel) => [
 			layout = new ColumnLayout(2)
@@ -87,9 +87,7 @@ class BusquedaWindow extends SimpleWindow<BusquedaAppModel> {
 		new DetalleLocalWindow(this, poi)
 	}
 
-	def dispatch getDetalleWindow(Iop poi) {
-		new DetallePoiWindow(this, poi)
-	}
+	
 	def dispatch getDetalleWindow(Banco poi) {
 		new DetalleBancoWindow(this, poi)
 	}

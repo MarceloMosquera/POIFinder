@@ -1,21 +1,34 @@
 package grupo5
 
 import org.eclipse.xtend.lib.annotations.Accessors
+import org.uqbar.commons.model.Entity
+import org.uqbar.commons.utils.Observable
 import java.util.List
 import java.util.ArrayList
 
 @Accessors
-class Usuario {
+@Observable
+class Usuario extends Entity{
 	
 	String nombre
 	Busqueda busqueda 
 	Administrador admin
+	String username
+	String password
 	List<Integer> busquedasRealizadas =new ArrayList
+	
+	new (String name, String user, String pass){
+		nombre= name
+		username= user
+		password= pass
+	}
 	
 	new(Repo rep, String name) {
 		busqueda = new Busqueda(rep, this)
 		nombre=name
 	}
+	
+	
 	def buscar(String algo){
 		busqueda.buscar(algo)
 		

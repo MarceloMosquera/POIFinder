@@ -28,7 +28,7 @@ class Repo extends CollectionBasedRepo<Iop> {
 			throw new RuntimeException("No se encontró el objeto a actualizar")
 		}
 	}
-
+	
 	def create(List<Iop> iop) {
 		iop.forEach[n|this.create(n)]
 	}

@@ -1,12 +1,13 @@
 package ar.edu.unsam.PoiFinder.UI
 
+import grupo5.BuilderIop
+import grupo5.Repo
+import grupo5.Usuario
+import java.util.Arrays
 import org.uqbar.arena.bootstrap.Bootstrap
 import org.uqbar.commons.utils.ApplicationContext
-import grupo5.Iop
-import grupo5.Repo
 import org.uqbar.geodds.Point
-import grupo5.BuilderIop
-import java.util.Arrays
+import grupo5.RepoUsuario
 
 class PoiFinderBootstrap  implements Bootstrap   {
 	
@@ -42,7 +43,17 @@ class PoiFinderBootstrap  implements Bootstrap   {
 
 		repo.create(listaPois)
 		
+		val user1= new Usuario("Dodino","dodain","algo")
+		val user2= new Usuario("Pepe","PP","PP")
+		val user3= new Usuario("Sarasa","lo9s","1234")
+		val user4= new Usuario("Aangus","Angus","qwert")
+		var repoUser= new RepoUsuario()
+		repoUser.create(user1)
+		repoUser.create(user2)
+		repoUser.create(user3)
+		repoUser.create(user4)
 		ApplicationContext.instance.configureSingleton(typeof(Repo), repo)
+		ApplicationContext.instance.configureSingleton(typeof(RepoUsuario), repoUser)
 		
 	}
 	

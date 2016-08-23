@@ -2,6 +2,7 @@ package ar.edu.unsam.PoiFinder.UI
 
 import grupo5.Repo
 import org.uqbar.commons.utils.ApplicationContext
+import grupo5.RepoUsuario
 
 class BaseAppModel {
 	
@@ -9,5 +10,7 @@ class BaseAppModel {
 		ApplicationContext.instance.getSingleton(typeof(Repo))
 	}
 	
-	//prueba jahesa
+	def RepoUsuario getRepoUser() {
+		ApplicationContext.instance.getSingleton(typeof(RepoUsuario))
+	}
 }
