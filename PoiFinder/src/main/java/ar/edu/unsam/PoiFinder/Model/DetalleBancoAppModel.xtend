@@ -1,4 +1,4 @@
-package ar.edu.unsam.PoiFinder.UI
+package ar.edu.unsam.PoiFinder.Model
 
 import grupo5.Iop
 import grupo5.Local
@@ -8,7 +8,7 @@ import grupo5.Banco
 
 @Observable
 @Accessors
-class DetalleBancoAppModel extends DetallePoiAppModel {
+class DetalleBancoAppModel extends ar.edu.unsam.PoiFinder.UI.DetallePoiAppModel {
 	
 	Banco banco
 	

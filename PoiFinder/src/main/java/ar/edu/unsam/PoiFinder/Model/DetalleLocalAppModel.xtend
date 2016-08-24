@@ -1,4 +1,4 @@
-package ar.edu.unsam.PoiFinder.UI
+package ar.edu.unsam.PoiFinder.Model
 
 import grupo5.Iop
 import grupo5.Local
@@ -7,7 +7,7 @@ import org.uqbar.commons.utils.Observable
 
 @Observable
 @Accessors
-class DetalleLocalAppModel extends DetallePoiAppModel {
+class DetalleLocalAppModel extends ar.edu.unsam.PoiFinder.UI.DetallePoiAppModel {
 	
 	Local local
 	

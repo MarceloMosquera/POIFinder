@@ -45,6 +45,8 @@ import grupo5.Banco
 
 		createChildPanel(detPanel)
 		
+		//Despues de Distancia
+		
 	}
 	
 	def createChildPanel(Panel detPanel)

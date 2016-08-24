@@ -1,4 +1,4 @@
-package ar.edu.unsam.PoiFinder.UI
+package ar.edu.unsam.PoiFinder.Model
 
 
 import org.eclipse.xtend.lib.annotations.Accessors
@@ -7,7 +7,7 @@ import grupo5.Cgp
 
 @Observable
 @Accessors
-class DetalleCgpAppModel extends DetallePoiAppModel {
+class DetalleCgpAppModel extends ar.edu.unsam.PoiFinder.UI.DetallePoiAppModel {
 	
 	Cgp cgp
 	
