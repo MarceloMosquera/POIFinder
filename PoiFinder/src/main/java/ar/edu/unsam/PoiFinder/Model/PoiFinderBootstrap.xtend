@@ -1,4 +1,4 @@
-package ar.edu.unsam.PoiFinder.UI
+package ar.edu.unsam.PoiFinder.Model
 
 import grupo5.BuilderIop
 import grupo5.Repo
@@ -9,11 +9,13 @@ import org.uqbar.commons.utils.ApplicationContext
 import org.uqbar.geodds.Point
 import grupo5.RepoUsuario
 
-class PoiFinderBootstrap  implements Bootstrap   {
+class PoiFinderBootstrap  implements Bootstrap
+{
 	
 	def void init() {}
 	
-	override isPending() {
+	override isPending()
+	{
 		//throw new UnsupportedOperationException("TODO: auto-generated method stub")
 		false
 	}

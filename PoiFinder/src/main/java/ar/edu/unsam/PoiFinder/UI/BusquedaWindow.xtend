@@ -17,7 +17,7 @@ import static extension org.uqbar.arena.xtend.ArenaXtendExtensions.*
 import grupo5.Banco
 import grupo5.Colectivo
 import grupo5.Cgp
-
+import ar.edu.unsam.PoiFinder.Model.BusquedaAppModel
 
 class BusquedaWindow extends SimpleWindow<BusquedaAppModel> {
 

@@ -8,12 +8,14 @@ import grupo5.Banco
 
 @Observable
 @Accessors
-class DetalleBancoAppModel extends ar.edu.unsam.PoiFinder.UI.DetallePoiAppModel {
-	
+class DetalleBancoAppModel extends DetallePoiAppModel
+{
 	Banco banco
 	
-	new(Banco banco) {
+	new(Banco banco)
+	{
 		super(banco)
 		this.banco = banco
 	}
+	
 }

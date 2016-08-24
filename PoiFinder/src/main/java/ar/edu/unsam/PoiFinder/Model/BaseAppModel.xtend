@@ -1,4 +1,4 @@
-package ar.edu.unsam.PoiFinder.UI
+package ar.edu.unsam.PoiFinder.Model
 
 import grupo5.Repo
 import org.uqbar.commons.utils.ApplicationContext

@@ -7,11 +7,13 @@ import grupo5.Cgp
 
 @Observable
 @Accessors
-class DetalleCgpAppModel extends ar.edu.unsam.PoiFinder.UI.DetallePoiAppModel {
+class DetalleCgpAppModel extends DetallePoiAppModel
+{
 	
 	Cgp cgp
 	
-	new(Cgp cgp) {
+	new(Cgp cgp)
+	{
 		super(cgp)
 		this.cgp = cgp
 	}

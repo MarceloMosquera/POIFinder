@@ -1,4 +1,4 @@
-package ar.edu.unsam.PoiFinder.UI
+package ar.edu.unsam.PoiFinder.Model
 
 import grupo5.Iop
 import java.util.ArrayList
@@ -9,7 +9,8 @@ import org.uqbar.commons.utils.Observable
 
 @Observable
 @Accessors
-class BusquedaAppModel extends BaseAppModel {
+class BusquedaAppModel extends BaseAppModel
+{
 	
 	String nombreDePoiABuscar
 	List<Iop> poisEncontrados 
