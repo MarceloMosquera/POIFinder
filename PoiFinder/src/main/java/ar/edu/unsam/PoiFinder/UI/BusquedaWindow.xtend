@@ -76,6 +76,16 @@ class BusquedaWindow extends SimpleWindow<BusquedaAppModel> {
 			title = "Direccion"
 			bindContentsToProperty("direccion")
 		]
+		new Column<Iop>(gridPois) => [
+			fixedSize = 150
+			title = "Cerca"
+		//	bindContentsToProperty("")
+		]
+		new Column<Iop>(gridPois) => [
+			fixedSize = 150
+			title = "Favorito"
+		//	bindContentsToProperty("")
+		]
 
 	}
 
