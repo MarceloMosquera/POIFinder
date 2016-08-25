@@ -41,9 +41,9 @@ class LoginWindow extends SimpleWindow<LoginAppModel>
 	
 	def validar()
 	{
-		val res = modelObject.validar() 
-		if (res) (new BusquedaWindow(this)).open
-		else this.showError("Pusiste cualquier cosa")
+		  
+		if (modelObject.validar()!=null) (new BusquedaWindow(this,modelObject.userIngresado)).open
+		else this.showError("Username o password mal ingresado")
 	}
 	
 	def cancelar() {

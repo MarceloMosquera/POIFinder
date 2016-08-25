@@ -16,8 +16,8 @@ class LoginAppModel extends BaseAppModel
 		userIngresado = new Usuario("","","")
 	}
 	
-	def  boolean validar(){
-		repoUser.validarLogin(userIngresado)
+	def validar(){
+		userIngresado=repoUser.validarLogin(userIngresado)
 	}
 	
 	

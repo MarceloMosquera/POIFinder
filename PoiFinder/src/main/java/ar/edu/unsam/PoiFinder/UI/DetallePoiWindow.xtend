@@ -18,6 +18,7 @@ import org.uqbar.arena.windows.Dialog
 import org.uqbar.arena.windows.WindowOwner
 import org.uqbar.arena.widgets.CheckBox
 import ar.edu.unsam.PoiFinder.Model.DetallePoiAppModel
+import org.uqbar.arena.layout.HorizontalLayout
 
 abstract class DetallePoiWindow  extends Dialog<DetallePoiAppModel>
 {
@@ -55,38 +56,39 @@ abstract class DetallePoiWindow  extends Dialog<DetallePoiAppModel>
 
 		createChildPanel(detPanel)
 		
-		val colDistancia = new Panel(mainPanel)
-		colDistancia.layout =  new ColumnLayout(2)
 		
-		new Label(colDistancia).text = "Distancia"
-		
-		new TextBox(colDistancia)								//valor de distancia
+		new Label(detPanel).text = "Distancia"
+		//new Label (detPanel).value = "Distancia"
 		
 		val col = new Panel(mainPanel)
-		col.layout =  new ColumnLayout(4)
+		col.layout =  new ColumnLayout(2)	
+		val columnaIzq = new Panel(col)
+		columnaIzq.layout =  new HorizontalLayout	
+		new Label(columnaIzq).text = "Calificiación General: "					
+		new Label(columnaIzq).text="3,4"//luego se bindea	
 		
-		new Label(col).text = "Calificiación General"
-		
-		new TextBox(col)									//valor Calificación
-			
-		new Label(col).text = "Favorito"
-		
-		new CheckBox(col).value //<=> "estaAprobada"
+		val columnaDerecha = new Panel(col)
+		columnaDerecha.layout =  new HorizontalLayout	
+		new Label(columnaDerecha).text = "Favorito"		
+		new CheckBox(columnaDerecha).value //<=> "estaAprobada"
 
-		this.crearOpinion(mainPanel)
+		this.crearOpinion(detPanel)
 		this.crearOpinionTexto(mainPanel)
 		this.grillaResultados(mainPanel)
 		
 	}
 	
-	def crearOpinion(Panel panel)
+	def crearOpinion(Panel detPanel)
 	{
-		val detPanel = new Panel(panel)
-		detPanel.layout =  new ColumnLayout(3)
+		val opPanel = new Panel(detPanel)
+		opPanel.layout =  new ColumnLayout(2)
+		val opIzq = new Panel(opPanel)
+		new Label(opIzq).text = "Tu opinión"
 		
-		new Label(detPanel).text = "Tu opinión"
-		
-		new TextBox(detPanel)
+			new TextBox(opIzq)=>[
+		     
+		      //onClick[ | cerrar  ]
+		]
 		
 		new Selector<Integer>(detPanel) =>
      	[

@@ -20,8 +20,8 @@ class PoiFinderApplication extends Application
 	
 	override protected createMainWindow()
 	{
-		//return new LoginWindow(this)
-		return new BusquedaWindow(this)
+		return new LoginWindow(this)
+//		return new BusquedaWindow(this)
 	}
 	
 	

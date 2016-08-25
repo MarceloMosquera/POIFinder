@@ -1,7 +1,12 @@
 package ar.edu.unsam.PoiFinder.UI
 
+import ar.edu.unsam.PoiFinder.Model.BusquedaAppModel
+import grupo5.Banco
+import grupo5.Cgp
+import grupo5.Colectivo
 import grupo5.Iop
 import grupo5.Local
+import grupo5.Usuario
 import org.uqbar.arena.layout.ColumnLayout
 import org.uqbar.arena.widgets.Button
 import org.uqbar.arena.widgets.Label
@@ -14,15 +19,14 @@ import org.uqbar.arena.windows.SimpleWindow
 import org.uqbar.arena.windows.WindowOwner
 
 import static extension org.uqbar.arena.xtend.ArenaXtendExtensions.*
-import grupo5.Banco
-import grupo5.Colectivo
-import grupo5.Cgp
-import ar.edu.unsam.PoiFinder.Model.BusquedaAppModel
 
 class BusquedaWindow extends SimpleWindow<BusquedaAppModel> {
-
-	new(WindowOwner parent) {
+	
+	Usuario userLogeado 
+	
+	new(WindowOwner parent,Usuario unUsuario) {
 		super(parent, new BusquedaAppModel)
+		userLogeado= unUsuario
 	}
 
 	override protected addActions(Panel actionsPanel) {
@@ -36,14 +40,15 @@ class BusquedaWindow extends SimpleWindow<BusquedaAppModel> {
 	override protected createFormPanel(Panel mainPanel) {
 		this.title = "Busqueda de puntos de interes"
 
+		
 		new Panel(mainPanel) => [
 			layout = new ColumnLayout(2)
 
 			new Label(it).text = "Criterio de busqueda"
 			new Label(it).text = ""
 			new Label(it).text = "Nombre"
-			new Label(it).text = ""
-
+			new Label(it).text = userLogeado.nombre
+			
 			new TextBox(it) => [
 				value <=> "nombreDePoiABuscar"
 				width = 200
@@ -76,16 +81,16 @@ class BusquedaWindow extends SimpleWindow<BusquedaAppModel> {
 			title = "Direccion"
 			bindContentsToProperty("direccion")
 		]
-		new Column<Iop>(gridPois) => [
-			fixedSize = 150
-			title = "Cerca"
-		//	bindContentsToProperty("")
-		]
-		new Column<Iop>(gridPois) => [
-			fixedSize = 150
-			title = "Favorito"
-		//	bindContentsToProperty("")
-		]
+//		new Column<Iop>(gridPois) => [
+//			fixedSize = 150
+//			title = "Cerca"
+//		//	bindContentsToProperty("")
+//		]
+//		new Column<Iop>(gridPois) => [
+//			fixedSize = 150
+//			title = "Favorito"
+//		//	bindContentsToProperty("")
+//		]
 
 	}
 

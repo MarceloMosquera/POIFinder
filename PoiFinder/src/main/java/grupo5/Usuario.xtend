@@ -16,6 +16,8 @@ class Usuario extends Entity{
 	String username
 	String password
 	List<Integer> busquedasRealizadas =new ArrayList
+	List<Iop> favoritos =new ArrayList
+	
 	
 	new (String name, String user, String pass){
 		nombre= name
