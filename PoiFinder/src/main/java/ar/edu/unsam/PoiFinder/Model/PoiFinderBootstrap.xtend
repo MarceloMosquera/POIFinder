@@ -8,6 +8,10 @@ import org.uqbar.arena.bootstrap.Bootstrap
 import org.uqbar.commons.utils.ApplicationContext
 import org.uqbar.geodds.Point
 import grupo5.RepoUsuario
+import grupo5.Servicio
+import java.util.List
+import grupo5.Horario
+import grupo5.Comuna
 
 class PoiFinderBootstrap  implements Bootstrap
 {
@@ -28,7 +32,38 @@ class PoiFinderBootstrap  implements Bootstrap
 		val point2 = Point.and(18.64558, 34.5667099)
 		val point3 = Point.and(20.548967, 15.9898980)
 		val point4 = Point.and(-34.546782, -58.552163)
-	
+		
+		var comuna1 = new Comuna(1)
+		var comuna2 = new Comuna(2)
+		
+		var Point vertice1comuna1 = Point.and(-34.508278, -58.479405)
+		var Point vertice2comuna1 = Point.and(-34.516642, -58.475876)
+		var Point vertice3comuna1 = Point.and(-34.517631, -58.488267)
+		
+		var Point vertice1comuna2 = Point.and(-34.565776, -58.538127)
+		var Point vertice2comuna2 = Point.and(-34.554939, -58.521443)
+		var Point vertice3comuna2 = Point.and(-34.589001, -58.519291)
+		var Point vertice4comuna2 = Point.and(-34.569315, -58.509994)
+		var Point vertice5comuna2 = Point.and(-34.579960, -58.541980)
+		
+		comuna1.addCoordenadadPoligono(vertice1comuna1)
+		comuna1.addCoordenadadPoligono(vertice2comuna1)
+		comuna1.addCoordenadadPoligono(vertice3comuna1)
+
+		comuna2.addCoordenadadPoligono(vertice1comuna2)
+		comuna2.addCoordenadadPoligono(vertice2comuna2)
+		comuna2.addCoordenadadPoligono(vertice3comuna2)
+		comuna2.addCoordenadadPoligono(vertice4comuna2)
+		comuna2.addCoordenadadPoligono(vertice5comuna2)
+		
+		val List<Servicio> servicioA = Arrays.asList(new Servicio("Rentas",new Horario(14,00,20,00))
+			,	new Servicio("Plan de Prevención del Delito",new Horario(9,00,18,00))
+			,	new Servicio("Defensoría del Niño, Niña y Adolescente",new Horario(10,30,21,00))
+		)
+		val List<Servicio> servicioB = Arrays.asList(new Servicio("Registro Civil",new Horario(14,00,20,00))
+			,	new Servicio("Defensa del Consumidor",new Horario(9,30,12,00))
+			,	new Servicio("Casamientos",new Horario(9,30,15,00))
+		)
 		var listaPois = new BuilderIop()
 			.crearBanco("Galicia", point1, "Belgrano", "Maximiliano", Arrays.asList("cobro cheques", "depósitos"), "Rivadavia 372")
 			.crearBanco("Santander", point2, "Colegiales", "Roberto", Arrays.asList("cajero automatico"),"Lavalleja 581")
@@ -39,13 +74,13 @@ class PoiFinderBootstrap  implements Bootstrap
 			.crearLocal("Lo de Rosa", Arrays.asList("Rabano", "Lechuga"), "Verduleria", point3,"Mitre 3271")
 			.crearLocal("Lo de Carlos", Arrays.asList("Vacio", "Chinchulin", "Chorrizo", "Nalga"), "Carniceria", point4,"Matheu 3289")
 			.crearLocal("Lo de Pepers", Arrays.asList("Chupetin", "Chicle", "Turron"), "Kiosco", point4,"Pueyrredon 3332")
-			.crearCgp(10, point2, "Recoleta", "Gutierrez, Marcos", "Pres. José E. Uriburu 1022", " 4958-6504 / 7660-7047", Arrays.asList("Defensoría del Niño, Niña y Adolescente", "Registro Civil", "Oficina de Intermediacion Laboral", "Mediación Comunitaria"))
-			.crearCgp(23, point4, "Flores", "Perez, Ramiro", "Esmeralda 4459", " 4235-8954 / 7658-7147", Arrays.asList("Casamientos", "Atención ciudadana"))
+			.crearCgp(comuna1,"Recoleta", "Gutierrez, Marcos", "Pres. José E. Uriburu 1022", " 4958-6504 / 7660-7047",servicioA)
+			.crearCgp(comuna2, "Flores", "Perez, Ramiro", "Esmeralda 4459", " 4235-8954 / 7658-7147", servicioB)
 			.build
 
 		repo.create(listaPois)
 		
-		val user1= new Usuario("Dodino","dodain","algo")
+		val user1= new Usuario("a","a","a")
 		val user2= new Usuario("Pepe","PP","PP")
 		val user3= new Usuario("Sarasa","lo9s","1234")
 		val user4= new Usuario("Aangus","Angus","qwert")

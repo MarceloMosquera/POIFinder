@@ -29,7 +29,16 @@ class Cgp extends Iop {
 		telefono=_telefono
 		servicio = _servicio
 	}
-
+	new(Comuna _numero,String barrios,String _director,String calle,String _telefono,List<Servicio> _servicio){
+		
+		nombre = "CGP "+_numero.nombre.toString
+		barrio=barrios
+		director=_director
+		direccion=calle
+		telefono=_telefono
+		servicios = _servicio
+	}
+	
 	def void addServicio(Servicio servicio) {
 		servicios.add(servicio)
 	}

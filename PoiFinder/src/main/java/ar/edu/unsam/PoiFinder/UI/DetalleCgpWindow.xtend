@@ -5,6 +5,7 @@ import org.uqbar.arena.layout.VerticalLayout
 import org.uqbar.arena.widgets.Label
 import org.uqbar.arena.widgets.Panel
 import org.uqbar.arena.windows.WindowOwner
+import org.uqbar.arena.layout.ColumnLayout
 
 class DetalleCgpWindow  extends DetallePoiWindow {
 	
@@ -23,11 +24,16 @@ class DetalleCgpWindow  extends DetallePoiWindow {
 		new Label(detPanel).text = cgp.direccion
 		new Label(detPanel).text = "Servicios"	
 			
-		val ser = new Panel(detPanel)
-		ser.layout = new VerticalLayout
-		cgp.servicio.forEach[s|new Label(ser).text=s]
+		new Panel(detPanel) => [
+			val izq = new Panel(it)
+			izq.layout = new VerticalLayout
+			val der = new Panel(it)
+			der.layout = new VerticalLayout
+			layout = new ColumnLayout(2)
+			cgp.servicios.forEach[s|new Label(izq).text=s.nombre]
+			cgp.servicios.forEach[s|new Label(der).text=s.horarioss]
 		new Label(detPanel).text = ""
-
+		]
 	}
 	
 }

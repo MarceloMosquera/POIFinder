@@ -1,5 +1,8 @@
 package grupo5
 
+import org.eclipse.xtend.lib.annotations.Accessors
+
+@Accessors
 class Horario {
 	int horaAperturaMañana
 	int horaAperturaTarde = 0

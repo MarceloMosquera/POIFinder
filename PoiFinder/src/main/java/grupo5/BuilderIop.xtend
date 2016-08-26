@@ -46,8 +46,11 @@ class BuilderIop
 		lista.add(cg)
 		this
 	}
-	
-	
+	def crearCgp(Comuna _numero,String barrios,String _director,String calle,String _telefono,List<Servicio> _servicio){
+		var Cgp cg = new Cgp(_numero, barrios, _director, calle, _telefono, _servicio)
+		lista.add(cg)
+		this
+	}
 	def build(){
 		lista
 	}
