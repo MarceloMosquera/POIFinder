@@ -2,24 +2,39 @@ package ar.edu.unsam.PoiFinder.Model
 
 import grupo5.Usuario
 import org.eclipse.xtend.lib.annotations.Accessors
+import org.uqbar.commons.model.UserException
 import org.uqbar.commons.utils.Observable
-import ar.edu.unsam.PoiFinder.Model.BaseAppModel
 
 @Observable
 @Accessors
-class LoginAppModel extends BaseAppModel
-{
-	Usuario userIngresado
-	
-	new()
-	{
-		userIngresado = new Usuario("","","")
+class LoginAppModel extends BaseAppModel {
+
+	String unNombre
+	String unPass
+	Usuario unUsuarioLogueado
+	Usuario unUserSinLoguear
+
+	def limpiar() {
+		unNombre = ""
+		unPass = ""
+
 	}
-	
-	def validar(){
-		userIngresado=repoUser.validarLogin(userIngresado)
+
+	def validarLogin() {
+		if (!repoUser.existeUsuario(unNombre)) {
+			throw new UserException("No existe el usuario indicado")
+		} else {
+			unUserSinLoguear = new Usuario("","","")
+			unUserSinLoguear.username = unNombre
+			unUserSinLoguear.password = unPass
+			
+			unUsuarioLogueado = repoUser.validarLogin(unUserSinLoguear)
+			
+			
+			if (!repoUser.validacionDePass(unNombre, unPass)) {
+			throw new UserException("Password incorrecta")
+		}
+		}
 	}
-	
-	
-	
+
 }

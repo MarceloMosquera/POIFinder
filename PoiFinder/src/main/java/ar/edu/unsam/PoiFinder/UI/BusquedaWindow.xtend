@@ -27,6 +27,8 @@ class BusquedaWindow extends SimpleWindow<BusquedaAppModel> {
 	new(WindowOwner parent,Usuario unUsuario) {
 		super(parent, new BusquedaAppModel)
 		userLogeado= unUsuario
+		this.title = "Busqueda de puntos de interes"
+		taskDescription = "Usuario: "+ userLogeado.nombre
 	}
 
 	override protected addActions(Panel actionsPanel) {
@@ -38,9 +40,7 @@ class BusquedaWindow extends SimpleWindow<BusquedaAppModel> {
 	}
 
 	override protected createFormPanel(Panel mainPanel) {
-		this.title = "Busqueda de puntos de interes"
-
-		
+				
 		new Panel(mainPanel) => [
 			layout = new ColumnLayout(2)
 

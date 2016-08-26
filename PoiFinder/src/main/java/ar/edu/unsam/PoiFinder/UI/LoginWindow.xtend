@@ -12,63 +12,52 @@ import org.uqbar.arena.windows.WindowOwner
 import static extension org.uqbar.arena.xtend.ArenaXtendExtensions.*
 import ar.edu.unsam.PoiFinder.Model.LoginAppModel
 
-class LoginWindow extends SimpleWindow<LoginAppModel>
-{
-	
-	new(WindowOwner parent)
-	{
-		super(parent, new LoginAppModel )
-	}
-	
-	
-	override protected addActions(Panel actionsPanel)
-	{
-		var but = new Panel(actionsPanel)
-		but.layout= new HorizontalLayout
-		
-		new Button(but) =>
-		[
-			caption = "OK"			
-			onClick([|validar])
-		]
-		
-		new Button(but) => 
-		[
-			caption = "Cancelar"			
-			onClick([|this.cancelar])
-		]
-	}
-	
-	def validar()
-	{
-		  
-		if (modelObject.validar()!=null) (new BusquedaWindow(this,modelObject.userIngresado)).open
-		else this.showError("Username o password mal ingresado")
-	}
-	
-	def cancelar() {
-		modelObject.userIngresado.username = ""
-		modelObject.userIngresado.password = ""
-	}
-	
-	override protected createFormPanel(Panel mainPanel)
-	{
-		this.title = "Login"
+class LoginWindow extends SimpleWindow<LoginAppModel> {
 
-		new Panel(mainPanel) =>
-		[
+	new(WindowOwner parent) {
+		super(parent, new LoginAppModel)
+		title = "Login"
+		taskDescription = "Bienvenido"
+	}
+
+	override protected addActions(Panel actionsPanel) {
+		var but = new Panel(actionsPanel)
+		but.layout = new HorizontalLayout
+
+		new Button(but) => [
+			caption = "OK"
+			onClick[|
+				modelObject.validarLogin
+				this.close
+				new BusquedaWindow(this, modelObject.unUsuarioLogueado).open
+			]
+			width = 100
+			disableOnError
+			setAsDefault
+
+		]
+
+		new Button(but) => [
+			caption = "Cancelar"
+			onClick[|modelObject.limpiar]
+			width = 100
+		]
+	}
+
+
+	override protected createFormPanel(Panel mainPanel) {
+		
+		new Panel(mainPanel) => [
 			new Label(it).text = "Usuario"
-			
-			new TextBox(it) =>
-			[
-				value <=> "userIngresado.username"
+
+			new TextBox(it) => [
+				value <=> "unNombre"
 				width = 200
 			]
-			
+
 			new Label(it).text = "Password"
-			
-			new PasswordField(mainPanel).value <=> "userIngresado.password"
+			new PasswordField(mainPanel).value <=> "unPass"
 		]
 	}
-	
+
 }

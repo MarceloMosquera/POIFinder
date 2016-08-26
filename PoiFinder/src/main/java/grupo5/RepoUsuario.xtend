@@ -13,7 +13,15 @@ class RepoUsuario extends CollectionBasedRepo<Usuario> {
 	def  validarLogin(Usuario user) {
 		allInstances.findFirst(usu|usu.username == user.username && usu.password==user.password)
 	}
-
+	
+	def existeUsuario(String unUser) {
+		allInstances.exists[user | user.username.equalsIgnoreCase(unUser)]
+	}
+	
+	def validacionDePass(String nombre, String pass) {
+		allInstances.exists[user | user.username==nombre && user.password==pass]
+	}
+	
 	
 	override createExample() {
 		throw new UnsupportedOperationException("TODO: auto-generated method stub")
