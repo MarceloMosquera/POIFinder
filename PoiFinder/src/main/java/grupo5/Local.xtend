@@ -32,9 +32,9 @@ class Local extends Iop {
 		diasAtencion.add(dia)
 	}
 
-	override estaCercaDe(Point point) {
-		coordenada.distance(point) <= distanciaMinCercania
-	}
+	//override estaCercaDe(Point point) {
+	//	coordenada.distance(point) <= distanciaMinCercania
+	//}
 
 	def void sethorarios(int horaap, int minap, int horacierr, int mincierr) {
 		horarios = new Horario(horaap, minap, horacierr, mincierr)
