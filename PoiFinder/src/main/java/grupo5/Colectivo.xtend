@@ -14,17 +14,12 @@ class Colectivo extends Iop
 	List<Point> parada
 	List<String> dias
 	
-	String cp
 
-	new(int nombre , int cantidadParadas)
+	new(int nombre , List<Point>paradass)
 	{
 		this.nombre = "Linea "+ nombre
 		linea = nombre.toString
-		parada = new ArrayList<Point>()
-		
-		
-		this.cantidad = "."+ cantidadParadas
-		cp = cantidadParadas.toString
+		parada = paradass
 	}
 
 	def addParada(double x, double y)
@@ -32,9 +27,9 @@ class Colectivo extends Iop
 		parada.add(Point.and(x, y))
 	}
 
-	override estaCercaDe(Point point)
+	override void estaCercaDe(Point point)
 	{
-		(parada.exists[paradas|paradas.distance(point) <= 0.1])	
+		estaCerca=(parada.exists[paradas|paradas.distance(point) <= 0.1])	
 	}
 
 	override estaAbierto(String nombre, String dia, int hora, int minuto)
@@ -45,6 +40,22 @@ class Colectivo extends Iop
 	override Boolean matcherXNombre(String _nombre)
 	{
 		linea ==_nombre
+	}
+	
+	//-----------------
+	// Lo hice asi porque no me funciona el min
+	//-----------------
+	override double distancia(Point point)
+	{
+	
+		
+		 var double tempa=parada.get(0).distance(point)
+		 for(var i=1;i<=parada.size;i++){
+		 	if(parada.get(i).distance(point)< tempa){
+		 		tempa=parada.get(i).distance(point)
+		 	}
+		 }
+		tempa
 	}
 	
 }
