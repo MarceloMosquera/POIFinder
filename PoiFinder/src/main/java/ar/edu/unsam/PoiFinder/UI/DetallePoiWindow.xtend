@@ -72,7 +72,7 @@ abstract class DetallePoiWindow  extends Dialog<DetallePoiAppModel>
 		new Label(x).text = "      "     
 		new Label(x).text = "                     Distancia"
 		new Label(x).text = "  "
-		new Label(x).text = " xxxx "
+		new Label(x).text = "modelObject.distancia.intValue.toString"
 		new Label(x).text = " km "
 		
 		val col = new Panel(mainPanel)
