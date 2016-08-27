@@ -21,16 +21,21 @@ abstract class Iop extends Entity
 	List<String> diasAtencion = newArrayList
 	List<String> palabrasClaves = new ArrayList
 	
-	String cantidad
+	boolean estaCerca= false
 
 	def estaAbierto(String nombre, String dia, int hora, int minuto)
 	{
 		(horarios.checkHora(hora, minuto) && diasAtencion.contains(dia))
 	}
 
-	def estaCercaDe(Point point)
+	def void estaCercaDe(Point point)
 	{
-		coordenada.distance(point) <= distanciaMinCercania
+		estaCerca=coordenada.distance(point) <= distanciaMinCercania
+	}
+	
+	def   distancia(Point point)
+	{
+		coordenada.distance(point)
 	}
 	
 	def Boolean matcherXNombre(String _nombre)
