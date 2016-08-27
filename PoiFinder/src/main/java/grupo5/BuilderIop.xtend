@@ -18,9 +18,9 @@ class BuilderIop
 		this
 	}
 	
-	def crearColectivo(int nombre, int cp)
+	def crearColectivo(int nombre,List<Point> paradas)
 	{
-		var Colectivo colec = new Colectivo(nombre, cp)
+		var Colectivo colec = new Colectivo(nombre, paradas)
 		lista.add(colec)
 		
 		this
