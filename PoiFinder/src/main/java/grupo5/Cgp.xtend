@@ -29,10 +29,11 @@ class Cgp extends Iop {
 		telefono=_telefono
 		servicio = _servicio
 	}
-	new(Comuna _numero,String barrios,String _director,String calle,String _telefono,List<Servicio> _servicio){
+	new(Comuna _numero,Point _coordenada,String barrios,String _director,String calle,String _telefono,List<Servicio> _servicio){
 		
 		nombre = "CGP "+_numero.nombre.toString
 		barrio=barrios
+		coordenada=_coordenada
 		director=_director
 		direccion=calle
 		telefono=_telefono
@@ -60,12 +61,17 @@ class Cgp extends Iop {
 	}
 
 	
-	override estaCercaDe(Point point) {
-		comuna.validarPosicion(point)
+	override void estaCercaDe(Point point) {
+		estaCerca=comuna.validarPosicion(point)
 	}
 	
 	override Boolean matcherXNombre(String nombre){
 		direccion.startsWith(nombre)||barrio.startsWith(nombre)
+	}
+	
+	override  distancia(Point point)
+	{
+		coordenada.distance(point)
 	}
 
 }
