@@ -29,7 +29,7 @@ class DetalleColectivoWindow extends DetallePoiWindow
 		
 		new Label(b).text = ""
 		new Label(b).text = "Cant. de Paradas"
-		new Label(b).text = colectivo.parada.size
+		new Label(b).text = colectivo.parada.size.toString
 		new Label(b).text = ""
 	}
 }

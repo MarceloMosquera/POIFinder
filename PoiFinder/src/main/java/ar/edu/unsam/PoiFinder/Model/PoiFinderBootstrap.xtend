@@ -8,6 +8,10 @@ import org.uqbar.arena.bootstrap.Bootstrap
 import org.uqbar.commons.utils.ApplicationContext
 import org.uqbar.geodds.Point
 import grupo5.RepoUsuario
+import grupo5.Comuna
+import java.util.List
+import grupo5.Servicio
+import grupo5.Horario
 
 class PoiFinderBootstrap implements Bootstrap
 {

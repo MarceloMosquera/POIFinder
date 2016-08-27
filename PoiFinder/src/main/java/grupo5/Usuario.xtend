@@ -5,6 +5,7 @@ import org.uqbar.commons.model.Entity
 import org.uqbar.commons.utils.Observable
 import java.util.List
 import java.util.ArrayList
+import org.uqbar.geodds.Point
 
 @Accessors
 @Observable

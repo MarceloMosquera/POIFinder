@@ -33,7 +33,7 @@ abstract class Iop extends Entity
 		estaCerca=coordenada.distance(point) <= distanciaMinCercania
 	}
 	
-	def   distancia(Point point)
+	def double  distancia(Point point)
 	{
 		coordenada.distance(point)
 	}

@@ -50,7 +50,7 @@ class Colectivo extends Iop
 	
 		
 		 var double tempa=parada.get(0).distance(point)
-		 for(var i=1;i<=parada.size;i++){
+		 for(var int i=1;i<parada.size;i++){
 		 	if(parada.get(i).distance(point)< tempa){
 		 		tempa=parada.get(i).distance(point)
 		 	}

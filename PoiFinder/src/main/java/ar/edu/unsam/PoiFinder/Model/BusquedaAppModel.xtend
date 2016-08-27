@@ -19,6 +19,7 @@ class BusquedaAppModel extends BaseAppModel
 	def search(){
 		poisEncontrados = new ArrayList<Iop>
 		poisEncontrados=repo.searchFor(nombreDePoiABuscar)
+		poisEncontrados.forEach[n|n.estaCercaDe(user.gpsCoor)]
 	}
 	
 	@Dependencies("poiSeleccionado")

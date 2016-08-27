@@ -85,7 +85,7 @@ class BusquedaWindow extends SimpleWindow<BusquedaAppModel> {
 			fixedSize = 150
 			title = "Cerca"
 			bindContentsToProperty("estaCerca").transformer=[boolean get|if(get)"Si"else"No"]
-//		]
+		]
 //		new Column<Iop>(gridPois) => [
 //			fixedSize = 150
 //			title = "Favorito"
