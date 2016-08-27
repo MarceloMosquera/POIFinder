@@ -20,6 +20,8 @@ import org.uqbar.arena.widgets.tables.Column
 import org.uqbar.arena.widgets.tables.Table
 import org.uqbar.arena.windows.Dialog
 import org.uqbar.arena.windows.WindowOwner
+import static extension org.uqbar.arena.xtend.ArenaXtendExtensions.*
+import grupo5.Opinion
 
 abstract class DetallePoiWindow  extends Dialog<DetallePoiAppModel>
 {
@@ -115,10 +117,11 @@ abstract class DetallePoiWindow  extends Dialog<DetallePoiAppModel>
 		new Label(opIzq).text = "Tu opinión"
 		new TextBox(opIzq) =>
 		[
+			value <=> "comentarioUser"
 			height = 40				//Altura
 			width = 170				//Obtiene o establece el ancho del control.
 			multiLine = true
-
+			
 			//enabled
 			//visible = false
 			//multilineb.true
@@ -154,7 +157,7 @@ abstract class DetallePoiWindow  extends Dialog<DetallePoiAppModel>
      	new Button(columnaDerechaOpinion) =>
      	[
 		      caption = "Enviar"
-		      //onClick[ | cerrar  ]
+		      onClick([|modelObject.enviarComentario()])
 		]
 	}
 	
@@ -173,37 +176,36 @@ abstract class DetallePoiWindow  extends Dialog<DetallePoiAppModel>
 	{
 		val gri = new Panel(panel)
 		gri.layout =  new VerticalLayout	
-		val gridPois = new Table(gri, typeof(Iop)) =>
+		val gridPois = new Table(gri, typeof(Opinion)) =>
 		[
 			height = 200
 			numberVisibleRows = 6
-			
-//			bindItemsToProperty("poisEncontrados")
+			bindItemsToProperty("opinionesDelPoi")
 //			bindValueToProperty("poiSeleccionado")
 			
 			setNumberVisibleRows(5)
 		]
 
-		new Column<Iop>(gridPois) =>
+		new Column<Opinion>(gridPois) =>
 		[
 			fixedSize = 100
 			title = "Usuario"
-			bindContentsToProperty("search")
+			bindContentsToProperty("user")
 		]
 
-		new Column<Iop>(gridPois) =>
+		new Column<Opinion>(gridPois) =>
 		[
 			fixedSize = 100
 			title = "Comentario"
-			bindContentsToProperty("direccion")
+			bindContentsToProperty("coment")
 		]
 		
-		new Column<Iop>(gridPois) =>
-		[
-			fixedSize = 100
-			title = "Calificación"
-			bindContentsToProperty("direccion")
-		]
+//		new Column<Opinion>(gridPois) =>
+//		[
+//			fixedSize = 100
+//			title = "Calificación"
+//			bindContentsToProperty("direccion")
+//		]
 	}
 	
 	def createChildPanel(Panel detPanel)

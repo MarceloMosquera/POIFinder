@@ -20,6 +20,7 @@ class Usuario extends Entity{
 	List<Iop> favoritos =new ArrayList
 	Point gpsCoor
 	
+	
 	new (String name, String user, String pass){
 		nombre= name
 		username= user
@@ -55,5 +56,6 @@ class Usuario extends Entity{
 	def nuevaBusqueda(int i) {
 		busquedasRealizadas.add(i)
 	}
+	
 	
 }

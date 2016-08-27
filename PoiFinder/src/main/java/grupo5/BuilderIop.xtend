@@ -17,6 +17,13 @@ class BuilderIop
 		lista.add(ban)
 		this
 	}
+	def crearBancoConOpinion(String _nombre, Point _coordenada,String sucursal,String _gerente,List<String> _servicio, String dir,Usuario usr,String opinion)
+	{
+		var Banco ban = new Banco(_nombre, _coordenada,sucursal,_gerente, _servicio, dir)
+		ban.guardarOpinion(opinion,usr)
+		lista.add(ban)
+		this
+	}
 	
 	def crearColectivo(int nombre,List<Point> paradas)
 	{
