@@ -24,12 +24,12 @@ class DetalleColectivoWindow extends DetallePoiWindow
 		
 		new Label(b).text = ""
 		new Label(b).text = "Nro. de línea"
-		new Label(b).text = modelObject.poi.nombre
+		new Label(b).text = colectivo.nombre
 		new Label(b).text = ""
 		
 		new Label(b).text = ""
 		new Label(b).text = "Cant. de Paradas"
-		new Label(b).text = modelObject.poi.cantidad
+		new Label(b).text = colectivo.parada.size
 		new Label(b).text = ""
 	}
 }
