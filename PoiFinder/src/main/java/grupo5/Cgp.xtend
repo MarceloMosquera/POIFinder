@@ -32,6 +32,7 @@ class Cgp extends Iop {
 	new(Comuna _numero,Point _coordenada,String barrios,String _director,String calle,String _telefono,List<Servicio> _servicio){
 		
 		nombre = "CGP "+_numero.nombre.toString
+		comuna=_numero
 		barrio=barrios
 		coordenada=_coordenada
 		director=_director
