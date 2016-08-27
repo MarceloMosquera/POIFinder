@@ -4,6 +4,7 @@ import grupo5.Colectivo
 import org.uqbar.arena.widgets.Label
 import org.uqbar.arena.widgets.Panel
 import org.uqbar.arena.windows.WindowOwner
+import org.uqbar.arena.layout.ColumnLayout
 
 class DetalleColectivoWindow extends DetallePoiWindow
 {
@@ -18,18 +19,19 @@ class DetalleColectivoWindow extends DetallePoiWindow
 		
 		val colectivo = modelObject.poi as Colectivo
 		
-		new Label(detPanel).text = "Nro. de línea"
+		val b = new Panel(detPanel)
+		b.layout =  new ColumnLayout(4)
 		
-		new Label(detPanel).text = ""
+		new Label(b).text = ""
+		new Label(b).text = "Nro. de línea"
+		new Label(b).text = modelObject.poi.nombre
+		new Label(b).text = ""
 		
-		//Falta mostrar las cantidades de Paradas de cada Colectivo
-		//new Label(detPanel).text = colectivo.linea
-		
-		new Label(detPanel).text = "Cant. de Paradas"
-//		new Label(detPanel) => 
-//		[
-//			value <=> colectivo.parada.size
-//		]	
+		new Label(b).text = ""
+		new Label(b).text = "Cant. de Paradas"
+		new Label(b).text = modelObject.poi.cantidad
+		new Label(b).text = ""
 	}
 }
+
 

@@ -18,14 +18,13 @@ class BuilderIop
 		this
 	}
 	
-	def crearColectivo(int nombre)
+	def crearColectivo(int nombre, int cp)
 	{
-		var Colectivo colec = new Colectivo(nombre)
+		var Colectivo colec = new Colectivo(nombre, cp)
 		lista.add(colec)
 		
 		this
 	}
-	
 	
 	//def Local((Point coordenadas, double minimaDistancia,String _nombre)
 	def crearLocal(String _nombre,List<String> claves,String categoria,Point coordenadas,String dir)
@@ -46,13 +45,9 @@ class BuilderIop
 		lista.add(cg)
 		this
 	}
-	def crearCgp(Comuna _numero,String barrios,String _director,String calle,String _telefono,List<Servicio> _servicio){
-		var Cgp cg = new Cgp(_numero, barrios, _director, calle, _telefono, _servicio)
-		lista.add(cg)
-		this
-	}
-	def build(){
-		lista
-	}
 	
+	def build()
+	{
+		lista
+	}	
 }

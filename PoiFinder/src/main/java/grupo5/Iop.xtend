@@ -9,8 +9,8 @@ import org.uqbar.geodds.Point
 
 @Accessors
 @Observable
-abstract class Iop extends Entity {
-
+abstract class Iop extends Entity
+{
 	String nombre
 	String Barrio
 	String direccion
@@ -20,21 +20,21 @@ abstract class Iop extends Entity {
 	double distanciaMinCercania
 	List<String> diasAtencion = newArrayList
 	List<String> palabrasClaves = new ArrayList
+	
+	String cantidad
 
-	
-	
-	def estaAbierto(String nombre, String dia, int hora, int minuto) {
+	def estaAbierto(String nombre, String dia, int hora, int minuto)
+	{
 		(horarios.checkHora(hora, minuto) && diasAtencion.contains(dia))
 	}
 
-	def estaCercaDe(Point point) {
+	def estaCercaDe(Point point)
+	{
 		coordenada.distance(point) <= distanciaMinCercania
 	}
 	
-	def Boolean matcherXNombre(String _nombre){
+	def Boolean matcherXNombre(String _nombre)
+	{
 		nombre.startsWith(_nombre)
-	}
-	
-
-	
+	}	
 }

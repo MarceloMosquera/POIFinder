@@ -5,15 +5,14 @@ import org.uqbar.arena.layout.VerticalLayout
 import org.uqbar.arena.widgets.Label
 import org.uqbar.arena.widgets.Panel
 import org.uqbar.arena.windows.WindowOwner
-import org.uqbar.arena.layout.ColumnLayout
 
-class DetalleCgpWindow  extends DetallePoiWindow {
-	
-	new(WindowOwner parent, Cgp poi) {
+class DetalleCgpWindow  extends DetallePoiWindow
+{	
+	new(WindowOwner parent, Cgp poi)
+	{
 		super(parent, poi)
 	}
-
-	
+		
 	override createChildPanel(Panel detPanel)
 	{
 		this.title = "Cgp"
@@ -24,16 +23,51 @@ class DetalleCgpWindow  extends DetallePoiWindow {
 		new Label(detPanel).text = cgp.direccion
 		new Label(detPanel).text = "Servicios"	
 			
-		new Panel(detPanel) => [
-			val izq = new Panel(it)
-			izq.layout = new VerticalLayout
-			val der = new Panel(it)
-			der.layout = new VerticalLayout
-			layout = new ColumnLayout(2)
-			cgp.servicios.forEach[s|new Label(izq).text=s.nombre]
-			cgp.servicios.forEach[s|new Label(der).text=s.horarioss]
+		val ser = new Panel(detPanel)
+		ser.layout = new VerticalLayout
+		cgp.servicio.forEach[s|new Label(ser).text=s]
 		new Label(detPanel).text = ""
-		]
+		
+		
+//		val b = new Panel(detPanel)
+//		b.layout =  new ColumnLayout(4)
+//		new Label(b).text = ""
+//		new Label(b).text = "Barrio"
+//		new Label(b).text = cgp.barrio
+//		new Label(b).text = ""
+//		
+//		new Label(b).text = ""
+//		new Label(b).text = "Direccion"
+//		new Label(b).text = cgp.direccion
+//		new Label(b).text = ""
+		
+
+		
+//		new Label(b).text = ""
+//		new Label(b).text = "Servicios"
+//		val ser = new Panel(detPanel)
+//		ser.layout = new VerticalLayout
+//		cgp.servicio.forEach[s|new Label(b).text=s]
+//		new Label(b).text = ""
+		
+//		new Label(b).text = ""
+//		new Label(b).text = ""
+//		//new Label(detPanel).text = "Servicios"
+//		val ser = new Panel(detPanel)
+//		ser.layout = new VerticalLayout
+//		new Label(ser).text = "Servicios"
+//		cgp.servicio.forEach[s|new Label(ser).text=s]
+//		new Label(detPanel).text = ""
+		
+//		new Label(b).text = ""
+//		new Label(b).text = "Servicios"
+//		val ser = new Panel(detPanel)
+//		ser.layout = new VerticalLayout
+//		cgp.servicio.forEach[s|new Label(b).text=s]
+//		new Label(b).text = ""
+//		new Label(b).text = ""
+//		new Label(b).text = ""
+
 	}
 	
 }
