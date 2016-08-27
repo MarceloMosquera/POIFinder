@@ -29,7 +29,7 @@ class LoginAppModel extends BaseAppModel {
 			unUserSinLoguear.password = unPass
 			
 			unUsuarioLogueado = repoUser.validarLogin(unUserSinLoguear)
-			
+			user=unUsuarioLogueado
 			
 			if (!repoUser.validacionDePass(unNombre, unPass)) {
 			throw new UserException("Password incorrecta")
