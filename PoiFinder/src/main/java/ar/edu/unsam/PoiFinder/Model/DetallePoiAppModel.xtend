@@ -9,10 +9,11 @@ import org.uqbar.commons.utils.Observable
 class DetallePoiAppModel extends BaseAppModel
 {
 	Iop poi
-
+	double distancia
 	new (Iop poi)
 	{
 		this.poi = poi
+		distancia= poi.distancia(user.gpsCoor)
 	}
 
 	//Para hablilitar o deahabilitar un control, de ser necesario
