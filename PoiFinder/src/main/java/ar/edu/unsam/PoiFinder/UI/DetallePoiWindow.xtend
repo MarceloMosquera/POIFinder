@@ -140,7 +140,7 @@ abstract class DetallePoiWindow  extends Dialog<DetallePoiAppModel>
      	[
      		minimumValue = 1						//el valor mínimo que puede tomar
 			maximumValue = 5 						//el valor máximo que puede tomar
-			
+			value <=> "puntaje"
 			//enabled <=>"estasHabilitado"			//indica si está habilitado el control, se asocia a una propiedad que devuelve un boolean.
        	]
 
@@ -190,7 +190,7 @@ abstract class DetallePoiWindow  extends Dialog<DetallePoiAppModel>
 		[
 			fixedSize = 100
 			title = "Usuario"
-			bindContentsToProperty("user")
+			bindContentsToProperty("user.nombre")
 		]
 
 		new Column<Opinion>(gridPois) =>
@@ -200,12 +200,12 @@ abstract class DetallePoiWindow  extends Dialog<DetallePoiAppModel>
 			bindContentsToProperty("coment")
 		]
 		
-//		new Column<Opinion>(gridPois) =>
-//		[
-//			fixedSize = 100
-//			title = "Calificación"
-//			bindContentsToProperty("direccion")
-//		]
+		new Column<Opinion>(gridPois) =>
+		[
+			fixedSize = 100
+			title = "Calificación"
+			bindContentsToProperty("puntaje")
+		]
 	}
 	
 	def createChildPanel(Panel detPanel)
@@ -214,7 +214,7 @@ abstract class DetallePoiWindow  extends Dialog<DetallePoiAppModel>
 	
 	def cerrar ()
 	{
-		//this.accept
+		this.close
 	}
 }
 

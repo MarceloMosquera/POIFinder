@@ -12,6 +12,7 @@ import grupo5.Opinion
 class DetallePoiAppModel extends BaseAppModel
 {
 	Iop poi
+	int puntaje
 	double distancia
 	String comentarioUser
 	List<Opinion> opinionesDelPoi 
@@ -35,7 +36,7 @@ class DetallePoiAppModel extends BaseAppModel
 	}
 	
 	def enviarComentario(){
-		poi.guardarOpinion(comentarioUser,user)
+		poi.guardarOpinion(comentarioUser,user,puntaje)
 		comentarioUser=""
 		opinionesDelPoi=poi.getOpiniones()
 		//Si se define opiniones aca, aparece		

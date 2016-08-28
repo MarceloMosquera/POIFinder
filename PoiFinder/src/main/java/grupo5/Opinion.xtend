@@ -14,10 +14,11 @@ class Opinion
 	Usuario user
 	int puntaje			
 
-	new(String com, Usuario usr)
+	new(String com, Usuario usr, int score)
 	{
 		coment=com
 		user=usr
+		puntaje=score
 	}
 
 

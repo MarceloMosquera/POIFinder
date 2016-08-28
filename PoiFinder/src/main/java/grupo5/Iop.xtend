@@ -15,7 +15,6 @@ abstract class Iop extends Entity
 	String nombre
 	String Barrio
 	String direccion
-	List<Usuario> UsuarioComentado = newArrayList
 	int numero
 	Horario horarios
 	Point coordenada
@@ -31,8 +30,8 @@ abstract class Iop extends Entity
 	{
 		(horarios.checkHora(hora, minuto) && diasAtencion.contains(dia))
 	}
-	def guardarOpinion(String texto,Usuario user){
-		var op= new Opinion(texto,user)
+	def guardarOpinion(String texto,Usuario user,int puntaje){
+		var op= new Opinion(texto,user,puntaje)
 		opiniones.add(op)
 	}
 	def getOpiniones(){

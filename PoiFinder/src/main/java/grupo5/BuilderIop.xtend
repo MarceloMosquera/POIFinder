@@ -20,7 +20,7 @@ class BuilderIop
 	def crearBancoConOpinion(String _nombre, Point _coordenada,String sucursal,String _gerente,List<String> _servicio, String dir,Usuario usr,String opinion)
 	{
 		var Banco ban = new Banco(_nombre, _coordenada,sucursal,_gerente, _servicio, dir)
-		ban.guardarOpinion(opinion,usr)
+		ban.guardarOpinion(opinion,usr,4)
 		lista.add(ban)
 		this
 	}
