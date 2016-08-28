@@ -31,8 +31,8 @@ class Servicio {
 		hora
 	}
 	def String stringDias(){
-		val String dias =""
-		diasAtencion.forEach[d|dias.concat("gg")]
+		val String dias = diasAtencion.toString
+		
 		dias
 	}
 	def String setNombre(String texto) {

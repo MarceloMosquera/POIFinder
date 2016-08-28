@@ -22,8 +22,8 @@ class DetalleCgpWindow  extends DetallePoiWindow
 		
 		val cgpPanel = new Panel(detPanel)
 		cgpPanel.layout =  new ColumnLayout(4)
-		
-		new Label(cgpPanel).text = ""
+		detPanel.width=12
+		//new Label(cgpPanel).text = ""
 		new Label(cgpPanel).text = "Barrio: "
 		new Label(cgpPanel).text = cgp.barrio
 		new Label(cgpPanel).text = ""
@@ -35,20 +35,19 @@ class DetalleCgpWindow  extends DetallePoiWindow
 		
 		new Label(cgpPanel).text = ""
 		new Label(cgpPanel).text = "Servicios: "
-		
-		val column =new Panel(cgpPanel)
-		column.layout =new ColumnLayout(2)
-		val izq = new Panel(column)
+		val column =new Panel(detPanel)
+		column.layout =new ColumnLayout(3)
+		val izq = new Panel(cgpPanel)
 		izq.layout = new VerticalLayout()
 		cgp.servicios.forEach[c|new Label(izq).text = c.nombre]
-		val mid = new Panel(column)
+		val mid = new Panel(cgpPanel)
 		mid.layout = new VerticalLayout()
 		cgp.servicios.forEach[c|new Label(mid).text = c.stringHorario]
-//		val der = new Panel(column)
-//		der.layout = new VerticalLayout()
-//		cgp.servicios.forEach[c|new Label(der).text = c.stringDias]
-//		
-		new Label(cgpPanel).text = ""
+		val der = new Panel(cgpPanel)
+		der.layout = new VerticalLayout()
+		cgp.servicios.forEach[c|new Label(der).text = c.stringDias]
+		
+		new Label(detPanel).text = ""
 		
 	}
 	
