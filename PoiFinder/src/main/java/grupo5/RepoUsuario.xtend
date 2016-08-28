@@ -10,8 +10,8 @@ import org.uqbar.commons.utils.Observable
 @Accessors
 class RepoUsuario extends CollectionBasedRepo<Usuario> {
 
-	def  validarLogin(Usuario user) {
-		allInstances.findFirst(usu|usu.username == user.username && usu.password==user.password)
+	def  buscarUsuario(String unNombre, String unPass) {
+		allInstances.findFirst(usu|usu.username == unNombre && usu.password==unPass)
 	}
 	
 	def existeUsuario(String unUser) {

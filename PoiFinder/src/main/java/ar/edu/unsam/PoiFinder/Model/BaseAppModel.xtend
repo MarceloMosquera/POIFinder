@@ -6,12 +6,20 @@ import grupo5.RepoUsuario
 import grupo5.Usuario
 
 class BaseAppModel {
-	public static Usuario user = new Usuario("","","")
+
 	def Repo getRepo() {
 		ApplicationContext.instance.getSingleton(typeof(Repo))
 	}
-	
+
 	def RepoUsuario getRepoUser() {
 		ApplicationContext.instance.getSingleton(typeof(RepoUsuario))
+	}
+
+	def setUsuarioLoguedo(Usuario userLogueago) {
+		ApplicationContext.instance.configureSingleton(typeof(Usuario), userLogueago)
+	}
+
+	def Usuario getUsuarioLoguedo() {
+		ApplicationContext.instance.getSingleton(typeof(Usuario))
 	}
 }

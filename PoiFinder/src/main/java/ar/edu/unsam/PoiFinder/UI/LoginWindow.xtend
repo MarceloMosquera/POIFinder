@@ -11,6 +11,7 @@ import org.uqbar.arena.windows.WindowOwner
 
 import static extension org.uqbar.arena.xtend.ArenaXtendExtensions.*
 import ar.edu.unsam.PoiFinder.Model.LoginAppModel
+import ar.edu.unsam.PoiFinder.Model.BusquedaAppModel
 
 class LoginWindow extends SimpleWindow<LoginAppModel> {
 
@@ -29,7 +30,7 @@ class LoginWindow extends SimpleWindow<LoginAppModel> {
 			onClick[|
 				modelObject.validarLogin
 				this.close
-				new BusquedaWindow(this, modelObject.unUsuarioLogueado).open
+				new BusquedaWindow(this,new BusquedaAppModel).open
 			]
 			width = 100
 			disableOnError
@@ -44,9 +45,8 @@ class LoginWindow extends SimpleWindow<LoginAppModel> {
 		]
 	}
 
-
 	override protected createFormPanel(Panel mainPanel) {
-		
+
 		new Panel(mainPanel) => [
 			new Label(it).text = "Usuario"
 

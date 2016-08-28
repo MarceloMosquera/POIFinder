@@ -9,38 +9,31 @@ import grupo5.Opinion
 
 @Observable
 @Accessors
-class DetallePoiAppModel extends BaseAppModel
-{
+class DetallePoiAppModel extends BaseAppModel {
 	Iop poi
 	int puntaje
 	double distancia
 	String comentarioUser
-	List<Opinion> opinionesDelPoi 
-	
-	
-	
-	new (Iop poi)
-	{
+	List<Opinion> opinionesDelPoi
+
+	new(Iop poi) {
 		this.poi = poi
-		distancia= poi.distancia(user.gpsCoor)
+		distancia = poi.distancia(usuarioLoguedo.gpsCoor)
 //		opinionesDelPoi=poi.getOpiniones()     Si se desvincula aca, no muestra un pomo.
 	}
-	
 
-	//Para hablilitar o deahabilitar un control, de ser necesario
+	// Para hablilitar o deahabilitar un control, de ser necesario
 	boolean estasHabilitado
-	
-	def boolean getEstasHabilitado()
-	{
+
+	def boolean getEstasHabilitado() {
 		true
 	}
-	
-	def enviarComentario(){
-		poi.guardarOpinion(comentarioUser,user,puntaje)
-		comentarioUser=""
-		opinionesDelPoi=poi.getOpiniones()
-		//Si se define opiniones aca, aparece		
-	}
-	
-}
 
+	def enviarComentario() {
+		poi.guardarOpinion(comentarioUser, usuarioLoguedo, puntaje)
+		comentarioUser = ""
+		opinionesDelPoi = poi.getOpiniones()
+	// Si se define opiniones aca, aparece		
+	}
+
+}

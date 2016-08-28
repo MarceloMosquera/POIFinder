@@ -12,7 +12,7 @@ class LoginAppModel extends BaseAppModel {
 	String unNombre
 	String unPass
 	Usuario unUsuarioLogueado
-	Usuario unUserSinLoguear
+	//Usuario unUserSinLoguear
 
 	def limpiar() {
 		unNombre = ""
@@ -24,17 +24,28 @@ class LoginAppModel extends BaseAppModel {
 		if (!repoUser.existeUsuario(unNombre)) {
 			throw new UserException("No existe el usuario indicado")
 		} else {
-			unUserSinLoguear = new Usuario("","","")
-			unUserSinLoguear.username = unNombre
-			unUserSinLoguear.password = unPass
-			
-			unUsuarioLogueado = repoUser.validarLogin(unUserSinLoguear)
-			user=unUsuarioLogueado
-			
-			if (!repoUser.validacionDePass(unNombre, unPass)) {
-			throw new UserException("Password incorrecta")
-		}
+			if (repoUser.validacionDePass(unNombre, unPass)) {
+				unUsuarioLogueado = repoUser.buscarUsuario(unNombre, unPass)
+				setUsuarioLoguedo(unUsuarioLogueado)
+			} else {
+				throw new UserException("Password incorrecta")
+			}
 		}
 	}
-
+//	def validarLogin() {
+//		if (!repoUser.existeUsuario(unNombre)) {
+//			throw new UserException("No existe el usuario indicado")
+//		} else {
+//			unUserSinLoguear = new Usuario("","","")
+//			unUserSinLoguear.username = unNombre
+//			unUserSinLoguear.password = unPass
+//			
+//			unUsuarioLogueado = repoUser.validarLogin(unUserSinLoguear)
+//			user=unUsuarioLogueado
+//			
+//			if (!repoUser.validacionDePass(unNombre, unPass)) {
+//			throw new UserException("Password incorrecta")
+//		}
+//		}
+//	}
 }

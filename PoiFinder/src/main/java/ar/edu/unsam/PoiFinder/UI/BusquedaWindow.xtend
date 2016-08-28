@@ -6,7 +6,6 @@ import grupo5.Cgp
 import grupo5.Colectivo
 import grupo5.Iop
 import grupo5.Local
-import grupo5.Usuario
 import org.uqbar.arena.layout.ColumnLayout
 import org.uqbar.arena.widgets.Button
 import org.uqbar.arena.widgets.Label
@@ -21,14 +20,11 @@ import org.uqbar.arena.windows.WindowOwner
 import static extension org.uqbar.arena.xtend.ArenaXtendExtensions.*
 
 class BusquedaWindow extends SimpleWindow<BusquedaAppModel> {
-	
-	Usuario userLogeado 
-	
-	new(WindowOwner parent,Usuario unUsuario) {
-		super(parent, new BusquedaAppModel)
-		userLogeado= unUsuario
+
+	new(WindowOwner parent, BusquedaAppModel model) {
+		super(parent, model)
 		this.title = "Busqueda de puntos de interes"
-		taskDescription = "Usuario: "+ userLogeado.nombre
+		taskDescription = "Usuario: " + model.usuarioLoguedo.nombre
 	}
 
 	override protected addActions(Panel actionsPanel) {
@@ -40,7 +36,7 @@ class BusquedaWindow extends SimpleWindow<BusquedaAppModel> {
 	}
 
 	override protected createFormPanel(Panel mainPanel) {
-				
+
 		new Panel(mainPanel) => [
 			layout = new ColumnLayout(2)
 
@@ -48,7 +44,7 @@ class BusquedaWindow extends SimpleWindow<BusquedaAppModel> {
 			new Label(it).text = ""
 			new Label(it).text = "Nombre"
 			new Label(it).text = ""
-			
+
 			new TextBox(it) => [
 				value <=> "nombreDePoiABuscar"
 				width = 200
@@ -84,14 +80,13 @@ class BusquedaWindow extends SimpleWindow<BusquedaAppModel> {
 		new Column<Iop>(gridPois) => [
 			fixedSize = 150
 			title = "Cerca"
-			bindContentsToProperty("estaCerca").transformer=[boolean get|if(get)"Si"else"No"]
+			bindContentsToProperty("estaCerca").transformer = [boolean get|if(get) "Si" else "No"]
 		]
 //		new Column<Iop>(gridPois) => [
 //			fixedSize = 150
 //			title = "Favorito"
 //		//	bindContentsToProperty("")
 //		]
-
 	}
 
 	def verDetalle() {
@@ -102,7 +97,6 @@ class BusquedaWindow extends SimpleWindow<BusquedaAppModel> {
 		new DetalleLocalWindow(this, poi)
 	}
 
-	
 	def dispatch getDetalleWindow(Banco poi) {
 		new DetalleBancoWindow(this, poi)
 	}
@@ -111,12 +105,10 @@ class BusquedaWindow extends SimpleWindow<BusquedaAppModel> {
 		new DetalleCgpWindow(this, poi)
 	}
 
-	def dispatch getDetalleWindow(Colectivo poi)
-	{
+	def dispatch getDetalleWindow(Colectivo poi) {
 		new DetalleColectivoWindow(this, poi)
 	}
-	
-	
+
 	def openDialog(Dialog<?> dialog) {
 		dialog.onAccept[|modelObject.search]
 		dialog.open

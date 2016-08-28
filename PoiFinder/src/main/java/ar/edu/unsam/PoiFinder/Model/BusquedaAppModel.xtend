@@ -9,22 +9,20 @@ import org.uqbar.commons.utils.Observable
 
 @Observable
 @Accessors
-class BusquedaAppModel extends BaseAppModel
-{
-	
+class BusquedaAppModel extends BaseAppModel {
+
 	String nombreDePoiABuscar
-	List<Iop> poisEncontrados 
-	Iop poiSeleccionado	
-	
-	def search(){
+	List<Iop> poisEncontrados
+	Iop poiSeleccionado
+
+	def search() {
 		poisEncontrados = new ArrayList<Iop>
-		poisEncontrados=repo.searchFor(nombreDePoiABuscar)
-		poisEncontrados.forEach[n|n.estaCercaDe(user.gpsCoor)]
+		poisEncontrados = repo.searchFor(nombreDePoiABuscar)
+		poisEncontrados.forEach[n|n.estaCercaDe(usuarioLoguedo.gpsCoor)]
 	}
-	
+
 	@Dependencies("poiSeleccionado")
-	def boolean getHayPoiSeleccionado()
-	{
+	def boolean getHayPoiSeleccionado() {
 		poiSeleccionado != null
 	}
 
