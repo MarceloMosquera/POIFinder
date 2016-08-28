@@ -47,7 +47,7 @@ class BusquedaWindow extends SimpleWindow<BusquedaAppModel> {
 			new Label(it).text = "Criterio de busqueda"
 			new Label(it).text = ""
 			new Label(it).text = "Nombre"
-			new Label(it).text = userLogeado.nombre
+			new Label(it).text = ""
 			
 			new TextBox(it) => [
 				value <=> "nombreDePoiABuscar"

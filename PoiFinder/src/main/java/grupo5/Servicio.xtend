@@ -10,9 +10,10 @@ class Servicio {
 	List<String> diasAtencion = newArrayList
 	Horario horarios
 
-	new(String _nombre,Horario horario){
+	new(String _nombre,Horario horario,List<String> dias){
 		horarios= horario
 		nombre= _nombre
+		diasAtencion=dias
 	}
 	
 	def void sethorarios(int horaap, int minap, int horacierr, int mincierr) {
@@ -25,9 +26,14 @@ class Servicio {
 			horacierrTarde, mincierrTarde)
 	}
 	
-	def String horarioss(){
+	def String stringHorario(){
 		var String hora= horarios.horaAperturaMañana.toString +":"+ horarios.minutoAperturaMañana.toString +" - "+ horarios.horaCierreMañana.toString +":"+ horarios.minutoCierreMañana.toString
 		hora
+	}
+	def String stringDias(){
+		val String dias =""
+		diasAtencion.forEach[d|dias.concat("gg")]
+		dias
 	}
 	def String setNombre(String texto) {
 		nombre = texto

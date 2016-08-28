@@ -20,26 +20,36 @@ class DetalleCgpWindow  extends DetallePoiWindow
 		
 		val cgp = modelObject.poi as Cgp
 		
-		val cegepe = new Panel(detPanel)
-		cegepe.layout =  new ColumnLayout(4)
+		val cgpPanel = new Panel(detPanel)
+		cgpPanel.layout =  new ColumnLayout(4)
 		
-		new Label(cegepe).text = ""
-		new Label(cegepe).text = "Barrio: "
-		new Label(cegepe).text = cgp.barrio
-		new Label(cegepe).text = ""
+		new Label(cgpPanel).text = ""
+		new Label(cgpPanel).text = "Barrio: "
+		new Label(cgpPanel).text = cgp.barrio
+		new Label(cgpPanel).text = ""
 		
-		new Label(cegepe).text = ""
-		new Label(cegepe).text = "Direccion: "
-		new Label(cegepe).text = cgp.direccion
-		new Label(cegepe).text = ""
+		new Label(cgpPanel).text = ""
+		new Label(cgpPanel).text = "Direccion: "
+		new Label(cgpPanel).text = cgp.direccion
+		new Label(cgpPanel).text = ""
 		
-		new Label(cegepe).text = ""
-		new Label(cegepe).text = "Servicios: "
-
-		val cegepeServices = new Panel(cegepe)
-		cegepeServices.layout = new VerticalLayout()
-		cgp.servicio.forEach[c|new Label(cegepeServices).text = c]
-		new Label(cegepeServices).text = ""
+		new Label(cgpPanel).text = ""
+		new Label(cgpPanel).text = "Servicios: "
+		
+		val column =new Panel(cgpPanel)
+		column.layout =new ColumnLayout(2)
+		val izq = new Panel(column)
+		izq.layout = new VerticalLayout()
+		cgp.servicios.forEach[c|new Label(izq).text = c.nombre]
+		val mid = new Panel(column)
+		mid.layout = new VerticalLayout()
+		cgp.servicios.forEach[c|new Label(mid).text = c.stringHorario]
+//		val der = new Panel(column)
+//		der.layout = new VerticalLayout()
+//		cgp.servicios.forEach[c|new Label(der).text = c.stringDias]
+//		
+		new Label(cgpPanel).text = ""
+		
 	}
 	
 }
