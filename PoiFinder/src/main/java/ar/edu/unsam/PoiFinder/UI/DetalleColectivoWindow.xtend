@@ -19,18 +19,18 @@ class DetalleColectivoWindow extends DetallePoiWindow
 		
 		val colectivo = modelObject.poi as Colectivo
 		
-		val b = new Panel(detPanel)
-		b.layout =  new ColumnLayout(4)
+		val bus = new Panel(detPanel)
+		bus.layout =  new ColumnLayout(4)
 		
-		new Label(b).text = ""
-		new Label(b).text = "Nro. de línea"
-		new Label(b).text = colectivo.nombre
-		new Label(b).text = ""
+		new Label(bus).text = ""
+		new Label(bus).text = "Nro. de línea: "
+		new Label(bus).text = colectivo.nombre
+		new Label(bus).text = ""
 		
-		new Label(b).text = ""
-		new Label(b).text = "Cant. de Paradas"
-		new Label(b).text = colectivo.parada.size.toString
-		new Label(b).text = ""
+		new Label(bus).text = ""
+		new Label(bus).text = "Cant. de Paradas: "
+		new Label(bus).text = colectivo.parada.size.toString
+		new Label(bus).text = ""
 	}
 }
 
