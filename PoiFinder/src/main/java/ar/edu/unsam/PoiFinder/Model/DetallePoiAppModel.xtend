@@ -5,6 +5,7 @@ import java.util.List
 import org.eclipse.xtend.lib.annotations.Accessors
 import org.uqbar.commons.utils.Observable
 import grupo5.Poi
+import org.uqbar.commons.model.UserException
 
 @Observable
 @Accessors
@@ -31,14 +32,17 @@ class DetallePoiAppModel extends BaseAppModel {
 	}
 
 	def enviarComentario() {
+		if(poi.opiniones.exists(n|n.getUser()==usuarioLogueado)){
+				throw new UserException("No se permite opinar mas de una vez")
+		}else{
 		poi.guardarOpinion(comentarioUser, getUsuarioLogueado, puntaje)
-		comentarioUser = " "
+		comentarioUser = ""
 		opinionesDelPoi = poi.getOpiniones()
 		if(estaAprobada){
 			usuarioLogueado.agregarFavorito(poi)
 		}else{if(usuarioLogueado.estaFavorito(poi)){
 			usuarioLogueado.sacarFavorito(poi)
-		}}
+		}}}
 	// Si se define opiniones aca, aparece		
 	}
 

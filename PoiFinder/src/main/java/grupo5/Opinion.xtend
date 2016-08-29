@@ -8,20 +8,17 @@ import org.uqbar.commons.utils.TransactionalAndObservable
 
 @Accessors
 @TransactionalAndObservable
-class Opinion
-{
+class Opinion {
 	String coment
 	Usuario user
-	int puntaje=0			
+	int puntaje = 0
 
-	new(String com, Usuario usr, int score)
-	{
-		coment=com
-		user=usr
-		puntaje=score
+	new(String com, Usuario usr, int score) {
+		coment = com
+		user = usr
+		puntaje = score
 	}
 
+	def tieneUser(Usuario us) { if (user == us) {} }
 
-
-		
 }
