@@ -14,11 +14,13 @@ class DetallePoiAppModel extends BaseAppModel {
 	double distancia
 	String comentarioUser
 	List<Opinion> opinionesDelPoi
+	Boolean estaAprobada
 
 	new(Poi poi) {
 		this.poi = poi
 		distancia = poi.distancia(getUsuarioLogueado.gpsCoor)
 		opinionesDelPoi=poi.getOpiniones()
+		estaAprobada=usuarioLogueado.estaFavorito(poi)
 	}
 
 	// Para hablilitar o deahabilitar un control, de ser necesario
@@ -30,8 +32,13 @@ class DetallePoiAppModel extends BaseAppModel {
 
 	def enviarComentario() {
 		poi.guardarOpinion(comentarioUser, getUsuarioLogueado, puntaje)
-		comentarioUser = ""
+		comentarioUser = " "
 		opinionesDelPoi = poi.getOpiniones()
+		if(estaAprobada){
+			usuarioLogueado.agregarFavorito(poi)
+		}else{if(usuarioLogueado.estaFavorito(poi)){
+			usuarioLogueado.sacarFavorito(poi)
+		}}
 	// Si se define opiniones aca, aparece		
 	}
 

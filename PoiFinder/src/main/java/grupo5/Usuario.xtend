@@ -27,6 +27,18 @@ class Usuario extends Entity{
 		password= pass
 	}
 	
+	def agregarFavorito(Poi punto){
+		favoritos.add(punto)
+	}
+	
+	def estaFavorito(Poi punto){
+		favoritos.contains(punto)
+	}
+	
+	def sacarFavorito(Poi punto){
+		favoritos.remove(punto)
+	}
+	
 	new(Repo rep, String name) {
 		busqueda = new Busqueda(rep, this)
 		nombre=name

@@ -14,11 +14,13 @@ class BusquedaAppModel extends BaseAppModel {
 	String nombreDePoiABuscar
 	List<Poi> poisEncontrados
 	Poi poiSeleccionado
+	Boolean favoritos
 
 	def search() {
 		poisEncontrados = new ArrayList<Poi>
 		poisEncontrados = repo.searchFor(nombreDePoiABuscar)
 		poisEncontrados.forEach[n|n.estaCercaDe(getUsuarioLogueado.gpsCoor)]
+		
 	}
 
 	@Dependencies("poiSeleccionado")

@@ -55,14 +55,14 @@ abstract class DetallePoiWindow2 extends Dialog<DetallePoiAppModel> {
 		new Label(finalaLayout).text = modelObject.poi.points// luego se bindea
 		
 		new Label(finalaLayout).text = "Favorito"
-		new CheckBox(finalaLayout).value // <=> "estaAprobada"
+		new CheckBox(finalaLayout).value  <=> "estaAprobada"
 		
 		// Tu Opinon
 		val opinionLayout = new Panel(mainPanel)
 		opinionLayout.layout = new HorizontalLayout
 		new Label(opinionLayout).text = "Tu opinión"
 		new TextBox(opinionLayout) => [
-			// value <=> "comentarioUser"
+			value <=> "comentarioUser"
 			height = 40 // Altura
 			width = 170 // Obtiene o establece el ancho del control.
 			multiLine = true
