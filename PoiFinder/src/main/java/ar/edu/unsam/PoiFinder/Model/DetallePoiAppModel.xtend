@@ -18,7 +18,7 @@ class DetallePoiAppModel extends BaseAppModel {
 	new(Poi poi) {
 		this.poi = poi
 		distancia = poi.distancia(getUsuarioLogueado.gpsCoor)
-//		opinionesDelPoi=poi.getOpiniones()     Si se desvincula aca, no muestra un pomo.
+		opinionesDelPoi=poi.getOpiniones()
 	}
 
 	// Para hablilitar o deahabilitar un control, de ser necesario
