@@ -22,6 +22,7 @@ import org.uqbar.arena.widgets.Spinner
 import grupo5.Opinion
 import org.uqbar.arena.widgets.tables.Table
 import org.uqbar.arena.widgets.tables.Column
+import static extension org.uqbar.arena.xtend.ArenaXtendExtensions.*
 
 abstract class DetallePoiWindow2 extends Dialog<DetallePoiAppModel> {
 
@@ -51,7 +52,7 @@ abstract class DetallePoiWindow2 extends Dialog<DetallePoiAppModel> {
 		val finalaLayout = new Panel(mainPanel)
 		finalaLayout.layout = new HorizontalLayout 
 		new Label(finalaLayout).text = "Calificación General: "
-		new Label(finalaLayout).text = "3,4   " // luego se bindea
+		new Label(finalaLayout).text = modelObject.poi.points// luego se bindea
 		
 		new Label(finalaLayout).text = "Favorito"
 		new CheckBox(finalaLayout).value // <=> "estaAprobada"
@@ -69,9 +70,9 @@ abstract class DetallePoiWindow2 extends Dialog<DetallePoiAppModel> {
 
 		val opDer = new Panel(opinionLayout)
 		new Spinner(opDer) => [
-			minimumValue = 1 // el valor mínimo que puede tomar
+			minimumValue = 1// el valor mínimo que puede tomar
 			maximumValue = 5 // el valor máximo que puede tomar
-			// value <=> "puntaje"
+			 value <=> "puntaje"
 			// enabled <=>"estasHabilitado"			//indica si está habilitado el control, se asocia a una propiedad que devuelve un boolean.
 		]
 

@@ -12,7 +12,7 @@ class Opinion
 {
 	String coment
 	Usuario user
-	int puntaje			
+	int puntaje=0			
 
 	new(String com, Usuario usr, int score)
 	{

@@ -22,7 +22,7 @@ abstract class Poi extends Entity
 	List<String> diasAtencion = newArrayList
 	List<String> palabrasClaves = new ArrayList
 	List<Opinion> opiniones = newArrayList
-	
+	List<Usuario> UserLoveMe= newArrayList
 	
 	boolean estaCerca= false
 
@@ -52,4 +52,18 @@ abstract class Poi extends Entity
 		this.nombre.toLowerCase.contains(_nombre.toLowerCase)
 	}
 	
+	def String getPoints(){
+		var float pun=0
+     	//opiniones.forEach[n|pun=pun+n.puntaje]
+     	if(opiniones.size!=0){
+	     	for(var int i=0; i<opiniones.size;i++)
+	     		pun+=opiniones.get(i).puntaje
+	     	
+	     	pun=pun/(opiniones.size)
+	     }
+	    if(pun%1!=0)
+     	String.format("%.1f", pun)
+     	else
+     	String.format("%.0f", pun)
+	}
 }
