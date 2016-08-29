@@ -58,6 +58,6 @@ class Local extends Iop {
 	def clear(){palabrasClaves.clear}
 	
 	override Boolean matcherXNombre(String _nombre){
-		palabrasClaves.contains(_nombre)|| categoria == _nombre || this.nombre.startsWith(_nombre)
+		palabrasClaves.contains(_nombre)|| categoria.toLowerCase == _nombre.toLowerCase || this.nombre.toLowerCase.startsWith(_nombre.toLowerCase)
 	}
 }

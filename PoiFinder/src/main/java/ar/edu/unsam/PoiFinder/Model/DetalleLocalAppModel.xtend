@@ -1,6 +1,5 @@
 package ar.edu.unsam.PoiFinder.Model
 
-import grupo5.Iop
 import grupo5.Local
 import org.eclipse.xtend.lib.annotations.Accessors
 import org.uqbar.commons.utils.Observable

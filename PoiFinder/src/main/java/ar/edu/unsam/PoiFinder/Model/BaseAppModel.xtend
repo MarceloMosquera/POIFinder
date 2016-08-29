@@ -15,11 +15,11 @@ class BaseAppModel {
 		ApplicationContext.instance.getSingleton(typeof(RepoUsuario))
 	}
 
-	def setUsuarioLoguedo(Usuario userLogueago) {
-		ApplicationContext.instance.configureSingleton(typeof(Usuario), userLogueago)
+	def setUsuarioLogueado(Usuario userLogueado) {
+		ApplicationContext.instance.configureSingleton(typeof(Usuario), userLogueado)
 	}
 
-	def Usuario getUsuarioLoguedo() {
+	def Usuario getUsuarioLogueado() {
 		ApplicationContext.instance.getSingleton(typeof(Usuario))
 	}
 }

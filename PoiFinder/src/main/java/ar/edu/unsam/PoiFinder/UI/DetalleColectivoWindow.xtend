@@ -1,16 +1,17 @@
 package ar.edu.unsam.PoiFinder.UI
 
+import ar.edu.unsam.PoiFinder.Model.DetalleColectivoAppModel
 import grupo5.Colectivo
+import org.uqbar.arena.layout.ColumnLayout
 import org.uqbar.arena.widgets.Label
 import org.uqbar.arena.widgets.Panel
 import org.uqbar.arena.windows.WindowOwner
-import org.uqbar.arena.layout.ColumnLayout
 
-class DetalleColectivoWindow extends DetallePoiWindow
+class DetalleColectivoWindow extends DetallePoiWindow<DetalleColectivoAppModel>
 {
 	new(WindowOwner parent, Colectivo poi)
 	{
-		super(parent, poi)
+		super(parent, new DetalleColectivoAppModel(poi))
 	}
 
 	override createChildPanel(Panel detPanel)

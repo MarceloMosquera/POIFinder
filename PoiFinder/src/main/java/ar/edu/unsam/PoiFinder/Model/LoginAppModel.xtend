@@ -26,7 +26,7 @@ class LoginAppModel extends BaseAppModel {
 		} else {
 			if (repoUser.validacionDePass(unNombre, unPass)) {
 				unUsuarioLogueado = repoUser.buscarUsuario(unNombre, unPass)
-				setUsuarioLoguedo(unUsuarioLogueado)
+				setUsuarioLogueado(unUsuarioLogueado)
 			} else {
 				throw new UserException("Password incorrecta")
 			}

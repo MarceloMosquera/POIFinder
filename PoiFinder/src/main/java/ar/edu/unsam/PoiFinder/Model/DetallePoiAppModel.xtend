@@ -1,11 +1,10 @@
 package ar.edu.unsam.PoiFinder.Model
 
 import grupo5.Iop
+import grupo5.Opinion
+import java.util.List
 import org.eclipse.xtend.lib.annotations.Accessors
 import org.uqbar.commons.utils.Observable
-import grupo5.Usuario
-import java.util.List
-import grupo5.Opinion
 
 @Observable
 @Accessors
@@ -18,7 +17,7 @@ class DetallePoiAppModel extends BaseAppModel {
 
 	new(Iop poi) {
 		this.poi = poi
-		distancia = poi.distancia(usuarioLoguedo.gpsCoor)
+		distancia = poi.distancia(getUsuarioLogueado.gpsCoor)
 //		opinionesDelPoi=poi.getOpiniones()     Si se desvincula aca, no muestra un pomo.
 	}
 
@@ -30,7 +29,7 @@ class DetallePoiAppModel extends BaseAppModel {
 	}
 
 	def enviarComentario() {
-		poi.guardarOpinion(comentarioUser, usuarioLoguedo, puntaje)
+		poi.guardarOpinion(comentarioUser, getUsuarioLogueado, puntaje)
 		comentarioUser = ""
 		opinionesDelPoi = poi.getOpiniones()
 	// Si se define opiniones aca, aparece		

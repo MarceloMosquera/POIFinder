@@ -50,6 +50,7 @@ class Banco extends Iop {
 		(horarios.checkHora(hora, minuto) && diasAtencion.contains(dia))
 	}
 
+
 	def getnombre() {
 		nombre
 	}

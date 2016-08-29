@@ -24,7 +24,7 @@ class BusquedaWindow extends SimpleWindow<BusquedaAppModel> {
 	new(WindowOwner parent, BusquedaAppModel model) {
 		super(parent, model)
 		this.title = "Busqueda de puntos de interes"
-		taskDescription = "Usuario: " + model.usuarioLoguedo.nombre
+		taskDescription = "Usuario: " + model.getUsuarioLogueado.nombre
 	}
 
 	override protected addActions(Panel actionsPanel) {

@@ -67,7 +67,8 @@ class Cgp extends Iop {
 	}
 	
 	override Boolean matcherXNombre(String nombre){
-		direccion.startsWith(nombre)||barrio.startsWith(nombre)
+		direccion.toLowerCase.contains(nombre.toLowerCase)
+			||barrio.toLowerCase.contains(nombre.toLowerCase)
 	}
 	
 	override  distancia(Point point)

@@ -6,13 +6,14 @@ import org.uqbar.arena.widgets.Panel
 import org.uqbar.arena.windows.WindowOwner
 import org.uqbar.arena.layout.ColumnLayout
 import org.uqbar.arena.layout.VerticalLayout
+import ar.edu.unsam.PoiFinder.Model.DetalleBancoAppModel
 
-class DetalleBancoWindow  extends DetallePoiWindow
+class DetalleBancoWindow  extends DetallePoiWindow<DetalleBancoAppModel>
 {
 	
 	new(WindowOwner parent, Banco poi)
 	{
-		super(parent, poi)
+		super(parent, new DetalleBancoAppModel(poi))
 	}
 	
 	override createChildPanel(Panel detPanel)
@@ -21,25 +22,27 @@ class DetalleBancoWindow  extends DetallePoiWindow
 		
 		val banco = modelObject.poi as Banco
 		
-		val banck = new Panel(detPanel)
-		banck.layout =  new ColumnLayout(4)
+		val bank = new Panel(detPanel)
+		bank.layout =  new ColumnLayout(4)
 		
-		new Label(banck).text = ""
-		new Label(banck).text = "Direccion: "
-		new Label(banck).text = banco.direccion
-		new Label(banck).text = ""
+		new Label(bank).text = ""
+		new Label(bank).text = "Direccion: "
+		new Label(bank).text = banco.direccion
+		new Label(bank).text = ""
 		
-		new Label(banck).text = ""
-		new Label(banck).text = "Barrio: "
-		new Label(banck).text = banco.barrio
-		new Label(banck).text = ""
+		new Label(bank).text = ""
+		new Label(bank).text = "Barrio: "
+		new Label(bank).text = banco.barrio
+		new Label(bank).text = ""
 	
-		new Label(banck).text = ""
-		new Label(banck).text = "Servicios: "
+		new Label(bank).text = ""
+		new Label(bank).text = "Servicios: "
 
-		val banckServices = new Panel(banck)
-		banckServices.layout = new VerticalLayout
-		banco.servicio.forEach[b|new Label(banckServices).text = b]
-		new Label(banckServices).text = ""
+		val bankServices = new Panel(bank)
+		bankServices.layout = new VerticalLayout
+		banco.servicio.forEach[b|new Label(bankServices).text = b]
+		new Label(bankServices).text = ""
+		
+		new Label(bank).text = ""
 	}
 }

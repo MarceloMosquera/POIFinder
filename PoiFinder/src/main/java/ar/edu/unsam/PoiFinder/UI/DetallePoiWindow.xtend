@@ -23,11 +23,12 @@ import org.uqbar.arena.windows.WindowOwner
 import static extension org.uqbar.arena.xtend.ArenaXtendExtensions.*
 import grupo5.Opinion
 
-abstract class DetallePoiWindow  extends Dialog<DetallePoiAppModel>
+abstract class DetallePoiWindow<T>  extends Dialog<DetallePoiAppModel>
 {
-	new(WindowOwner parent, Iop poi)
+
+	new(WindowOwner parent, DetallePoiAppModel appModel)
 	{
-		super(parent, new DetallePoiAppModel(poi))
+		super(parent, appModel)
 	}
 
 	override protected addActions(Panel actionsPanel)
@@ -43,64 +44,48 @@ abstract class DetallePoiWindow  extends Dialog<DetallePoiAppModel>
 	{
 		this.title = "Puntos de interes"
 
-		val detPanel = new Panel(mainPanel)
-		detPanel.layout =  new ColumnLayout(2)
+		mainPanel.layout = new VerticalLayout
 
-		val a = new Panel(detPanel)
-		a.layout =  new VerticalLayout
-		
-		new Label(a).bindImageToProperty("poi", new Transformer<Iop, Image>()
+		val pnlTitulo = new Panel(mainPanel)
+		pnlTitulo.layout =  new ColumnLayout(4)
+		new Label(pnlTitulo).bindImageToProperty("poi", new Transformer<Iop, Image>()
 		{
 			override transform(Iop poi)
 			{
 				if (poi instanceof Colectivo ) new Image("bus.png")
-				else if (poi instanceof Cgp ) new  Image("cgp.png")
+				else if (poi instanceof Cgp )  new Image("cgp.png")
 				else if (poi instanceof Banco) new Image("bank.png")
 				else (new Image("local.png"))
 			}
 		}
 		) 
-		
-		val b = new Panel(detPanel)
-		b.layout =  new VerticalLayout
-		
-		new Label(b).text = modelObject.poi.nombre
+		new Label(pnlTitulo).text = " "
+		new Label(pnlTitulo).text = modelObject.poi.nombre
+		new Label(pnlTitulo).text = " "     
 
-		createChildPanel(detPanel)	
+		createChildPanel(mainPanel)	
 		
-		val x = new Panel(mainPanel)
-		x.layout =  new HorizontalLayout
+		val pnlReview = new Panel(mainPanel)
+		pnlReview.layout =  new VerticalLayout
 		
-		new Label(x).text = "      "     
-		new Label(x).text = "                     Distancia"
-		new Label(x).text = "  "
-		new Label(x).text = modelObject.distancia.intValue.toString
-		new Label(x).text = " km "
+		val pnlDistancia = new Panel(pnlReview)
+		pnlDistancia.layout =  new ColumnLayout(4)
+		new Label(pnlDistancia).text = " "     
+		new Label(pnlDistancia).text = "Distancia"
+		new Label(pnlDistancia).text = modelObject.distancia.intValue.toString +" km"
+		new Label(pnlDistancia).text = " "
 		
-		val col = new Panel(mainPanel)
-		col.layout =  new ColumnLayout(2)	
-		val columnaIzq = new Panel(col)
-		columnaIzq.layout =  new HorizontalLayout	
-		new Label(columnaIzq).text = "        "
-		new Label(columnaIzq).text = "Calificiación General: "					
-		new Label(columnaIzq).text = "3,4"					//luego se bindea	
+		new Label(pnlDistancia).text = "Calificación General: "					
+		new Label(pnlDistancia).text = "3,4"					//luego se bindea	
+		new Label(pnlDistancia).text = "Favorito"		
+		new CheckBox(pnlDistancia).value 					//<=> "estaAprobada"
 		
-		new Label(columnaIzq).text = "            "
+		this.panelRedactarOpinion(mainPanel)
 		
-		val columnaDerecha = new Panel(col)
-		columnaDerecha.layout =  new HorizontalLayout	
-		new Label(columnaDerecha).text = "Favorito"		
-		new CheckBox(columnaDerecha).value 					//<=> "estaAprobada"
-		new Label(columnaDerecha).text = "            "
-		
-		this.layoutRedactarOpinion(mainPanel)
-		
-		this.layoutRedactarOpinionCorta(mainPanel)
-
-		this.grillaResultados(mainPanel)
+		this.grillaOpiniones(mainPanel)
 	}
 	
-	def void layoutRedactarOpinion(Panel panel)
+	def void panelRedactarOpinion(Panel panel)
 	{
 		val opPanel = new Panel(panel)
 		opPanel.layout =  new ColumnLayout(2)
@@ -144,41 +129,21 @@ abstract class DetallePoiWindow  extends Dialog<DetallePoiAppModel>
 			//enabled <=>"estasHabilitado"			//indica si está habilitado el control, se asocia a una propiedad que devuelve un boolean.
        	]
 
-//		new Selector<NotaNumeriaOpinionModel>(columnaDerechaOpinion) =>
-//     	[
-//     		allowNull(false)
-//     		
-//     		value <=> "productoSeleccionado"
-//     		
-//    		 value <=> "notaSeleccionado"
-//     		bindItems(new ObservableProperty(this.modelObject, "notas")).adapter  = new PropertyAdapter(typeof(NotaModel ), "bn")	  
-//     	]  
-
      	new Button(columnaDerechaOpinion) =>
      	[
 		      caption = "Enviar"
 		      onClick([|modelObject.enviarComentario()])
 		]
 	}
-	
-	def void layoutRedactarOpinionCorta(Panel panel)
-	{
-		val o = new Panel(panel)
-		o.layout =  new ColumnLayout(2)	
-		val columnaIzqu = new Panel(o)
-		columnaIzqu.layout =  new HorizontalLayout	
-		new Label(columnaIzqu).text = "Opiniones: "		
-					
-		//new Label(columnaIzqu).text="Espacio para el Usr que se loguea ingrese su Opi"		//luego se bindea		
-	}
 
-	def void grillaResultados(Panel panel)
+	def void grillaOpiniones(Panel panel)
 	{
-		val gri = new Panel(panel)
-		gri.layout =  new VerticalLayout	
-		val gridPois = new Table(gri, typeof(Opinion)) =>
+		val pnlGrilla = new Panel(panel)
+		pnlGrilla.layout =  new VerticalLayout	
+		new Label(pnlGrilla).text = "Opiniones: "		
+		val gridPois = new Table(pnlGrilla, typeof(Opinion)) =>
 		[
-			height = 200
+			//height = 200
 			numberVisibleRows = 6
 			bindItemsToProperty("opinionesDelPoi")
 //			bindValueToProperty("poiSeleccionado")

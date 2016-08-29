@@ -1,17 +1,18 @@
 package ar.edu.unsam.PoiFinder.UI
 
+import ar.edu.unsam.PoiFinder.Model.DetalleCgpAppModel
 import grupo5.Cgp
 import org.uqbar.arena.layout.ColumnLayout
+import org.uqbar.arena.layout.VerticalLayout
+import org.uqbar.arena.widgets.Label
 import org.uqbar.arena.widgets.Panel
 import org.uqbar.arena.windows.WindowOwner
-import org.uqbar.arena.widgets.Label
-import org.uqbar.arena.layout.VerticalLayout
 
-class DetalleCgpWindow  extends DetallePoiWindow
+class DetalleCgpWindow  extends DetallePoiWindow<DetalleCgpAppModel>
 {	
 	new(WindowOwner parent, Cgp poi)
 	{
-		super(parent, poi)
+		super(parent, new DetalleCgpAppModel(poi))
 	}
 		
 	override createChildPanel(Panel detPanel)
@@ -22,8 +23,8 @@ class DetalleCgpWindow  extends DetallePoiWindow
 		
 		val cgpPanel = new Panel(detPanel)
 		cgpPanel.layout =  new ColumnLayout(4)
-		detPanel.width=12
-		//new Label(cgpPanel).text = ""
+		//detPanel.width=12
+		new Label(cgpPanel).text = ""
 		new Label(cgpPanel).text = "Barrio: "
 		new Label(cgpPanel).text = cgp.barrio
 		new Label(cgpPanel).text = ""
@@ -35,19 +36,17 @@ class DetalleCgpWindow  extends DetallePoiWindow
 		
 		new Label(cgpPanel).text = ""
 		new Label(cgpPanel).text = "Servicios: "
-		val column =new Panel(detPanel)
-		column.layout =new ColumnLayout(3)
-		val izq = new Panel(cgpPanel)
-		izq.layout = new VerticalLayout()
-		cgp.servicios.forEach[c|new Label(izq).text = c.nombre]
-		val mid = new Panel(cgpPanel)
-		mid.layout = new VerticalLayout()
-		cgp.servicios.forEach[c|new Label(mid).text = c.stringHorario]
-		val der = new Panel(cgpPanel)
-		der.layout = new VerticalLayout()
-		cgp.servicios.forEach[c|new Label(der).text = c.stringDias]
+		new Label(cgpPanel).text = ""
+		new Label(cgpPanel).text = ""
+
+		cgp.servicios.forEach[c|
+			new Label(cgpPanel).text = ""
+			new Label(cgpPanel).text = c.nombre
+			new Label(cgpPanel).text = c.stringHorario
+			new Label(cgpPanel).text = c.stringDias
+		]
 		
-		new Label(detPanel).text = ""
+		new Label(cgpPanel).text = ""
 		
 	}
 	
