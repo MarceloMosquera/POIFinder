@@ -8,7 +8,7 @@ import org.uqbar.commons.utils.TransactionalAndObservable
 
 @Accessors
 @TransactionalAndObservable
-class Cgp extends Iop {
+class Cgp extends Poi {
 	Comuna comuna
 	List<Servicio> servicios
 	String director

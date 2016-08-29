@@ -9,7 +9,7 @@ class Busqueda {
 
 	List<ObserverBusqueda> observer = new ArrayList
 	String nombre
-	List<Iop> results = new ArrayList
+	List<Poi> results = new ArrayList
 	Usuario usuario
 	Repo repo
 	long time

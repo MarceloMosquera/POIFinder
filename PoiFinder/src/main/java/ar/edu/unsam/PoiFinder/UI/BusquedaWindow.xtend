@@ -4,7 +4,6 @@ import ar.edu.unsam.PoiFinder.Model.BusquedaAppModel
 import grupo5.Banco
 import grupo5.Cgp
 import grupo5.Colectivo
-import grupo5.Iop
 import grupo5.Local
 import org.uqbar.arena.layout.ColumnLayout
 import org.uqbar.arena.widgets.Button
@@ -18,6 +17,7 @@ import org.uqbar.arena.windows.SimpleWindow
 import org.uqbar.arena.windows.WindowOwner
 
 import static extension org.uqbar.arena.xtend.ArenaXtendExtensions.*
+import grupo5.Poi
 
 class BusquedaWindow extends SimpleWindow<BusquedaAppModel> {
 
@@ -58,7 +58,7 @@ class BusquedaWindow extends SimpleWindow<BusquedaAppModel> {
 
 		]
 
-		val gridPois = new Table(mainPanel, typeof(Iop)) => [
+		val gridPois = new Table(mainPanel, typeof(Poi)) => [
 			height = 200
 			numberVisibleRows = 6
 			bindItemsToProperty("poisEncontrados")
@@ -66,18 +66,18 @@ class BusquedaWindow extends SimpleWindow<BusquedaAppModel> {
 			setNumberVisibleRows(5)
 		]
 
-		new Column<Iop>(gridPois) => [
+		new Column<Poi>(gridPois) => [
 			fixedSize = 150
 			title = "Nombre"
 			bindContentsToProperty("nombre")
 		]
 
-		new Column<Iop>(gridPois) => [
+		new Column<Poi>(gridPois) => [
 			fixedSize = 150
 			title = "Direccion"
 			bindContentsToProperty("direccion")
 		]
-		new Column<Iop>(gridPois) => [
+		new Column<Poi>(gridPois) => [
 			fixedSize = 150
 			title = "Cerca"
 			bindContentsToProperty("estaCerca").transformer = [boolean get|if(get) "Si" else "No"]

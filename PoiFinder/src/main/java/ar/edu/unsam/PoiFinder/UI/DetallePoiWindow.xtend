@@ -4,7 +4,6 @@ import ar.edu.unsam.PoiFinder.Model.DetallePoiAppModel
 import grupo5.Banco
 import grupo5.Cgp
 import grupo5.Colectivo
-import grupo5.Iop
 import org.apache.commons.collections15.Transformer
 import org.uqbar.arena.graphics.Image
 import org.uqbar.arena.layout.ColumnLayout
@@ -22,6 +21,7 @@ import org.uqbar.arena.windows.Dialog
 import org.uqbar.arena.windows.WindowOwner
 import static extension org.uqbar.arena.xtend.ArenaXtendExtensions.*
 import grupo5.Opinion
+import grupo5.Poi
 
 abstract class DetallePoiWindow<T>  extends Dialog<DetallePoiAppModel>
 {
@@ -48,9 +48,9 @@ abstract class DetallePoiWindow<T>  extends Dialog<DetallePoiAppModel>
 
 		val pnlTitulo = new Panel(mainPanel)
 		pnlTitulo.layout =  new ColumnLayout(4)
-		new Label(pnlTitulo).bindImageToProperty("poi", new Transformer<Iop, Image>()
+		new Label(pnlTitulo).bindImageToProperty("poi", new Transformer<Poi, Image>()
 		{
-			override transform(Iop poi)
+			override transform(Poi poi)
 			{
 				if (poi instanceof Colectivo ) new Image("bus.png")
 				else if (poi instanceof Cgp )  new Image("cgp.png")

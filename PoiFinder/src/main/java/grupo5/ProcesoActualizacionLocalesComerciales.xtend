@@ -6,7 +6,7 @@ import java.util.Date
 
 class ProcesoActualizacionLocalesComerciales extends Proceso
 {
-	List<Iop> locales = new ArrayList
+	List<Poi> locales = new ArrayList
 	TxtReader reader = new TxtReader
 	
 	
@@ -20,7 +20,7 @@ new(){}
 	override  hacer(String _busqueda){
 		this.init =new Date
 		var String [] temp
-		var Iop tempLocal = locales.findFirst[local|local.nombre.equals(_busqueda)]
+		var Poi tempLocal = locales.findFirst[local|local.nombre.equals(_busqueda)]
 			if(tempLocal!=null){			
 					temp= reader.read(_busqueda)					
 					return this.changeKeyWord(temp,tempLocal)						
@@ -32,7 +32,7 @@ new(){}
 	}
 
 
-	def changeKeyWord(String[] text,Iop tempLocal){
+	def changeKeyWord(String[] text,Poi tempLocal){
 		if(text.length!=0){
 				for(var i=0;i<text.length;i++){
 					tempLocal.palabrasClaves.add(text.get(i))

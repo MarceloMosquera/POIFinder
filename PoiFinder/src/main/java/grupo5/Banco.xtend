@@ -8,7 +8,7 @@ import org.uqbar.commons.utils.TransactionalAndObservable
 
 @Accessors
 @TransactionalAndObservable
-class Banco extends Iop {
+class Banco extends Poi {
 
 	List<String> diasAtencion = newArrayList("Lunes", "Martes", "Miercoles", "Jueves", "Viernes")
 	double distanciaMinCercania = 0.5

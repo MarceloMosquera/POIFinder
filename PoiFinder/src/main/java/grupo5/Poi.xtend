@@ -10,7 +10,7 @@ import java.util.Map
 
 @Accessors
 @Observable
-abstract class Iop extends Entity
+abstract class Poi extends Entity
 {
 	String nombre
 	String Barrio

@@ -4,9 +4,9 @@ import java.util.ArrayList
 import java.util.List
 import org.uqbar.geodds.Point
 
-class BuilderIop 
+class BuilderPoi 
 {
-	List<Iop> lista = new ArrayList<Iop>
+	List<Poi> lista = new ArrayList<Poi>
 	
 	//Representa el objeto complejo a construir.
 	//Colectivo c

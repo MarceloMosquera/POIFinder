@@ -8,20 +8,20 @@ import org.uqbar.commons.utils.Observable
 
 @Observable
 @Accessors
-class Repo extends CollectionBasedRepo<Iop> {
+class Repo extends CollectionBasedRepo<Poi> {
 
 	def boolean searchByName(String nombre) {
 		allInstances.exists(list|list.matcherXNombre(nombre))
 	}
 		
-	List<Iop> iopsResult = new ArrayList
-	def List<Iop> searchFor(String nombre) {
-		iopsResult.clear
-		allInstances.forEach(list|if(nombre==""||nombre==null||list.matcherXNombre(nombre)) iopsResult.add(list))
-		iopsResult
+	List<Poi> poisResult = new ArrayList
+	def List<Poi> searchFor(String nombre) {
+		poisResult.clear
+		allInstances.forEach(list|if(nombre==""||nombre==null||list.matcherXNombre(nombre)) poisResult.add(list))
+		poisResult
 	}
 
-	override void update(Iop object) {
+	override void update(Poi object) {
 		if (this.objects.remove(object)) {
 			this.objects.add(object)
 		} else {
@@ -29,7 +29,7 @@ class Repo extends CollectionBasedRepo<Iop> {
 		}
 	}
 	
-	def create(List<Iop> iop) {
+	def create(List<Poi> iop) {
 		iop.forEach[n|this.create(n)]
 	}
 
@@ -41,7 +41,7 @@ class Repo extends CollectionBasedRepo<Iop> {
 		throw new UnsupportedOperationException("TODO: auto-generated method stub")
 	}
 
-	override protected getCriterio(Iop example) {
+	override protected getCriterio(Poi example) {
 		throw new UnsupportedOperationException("TODO: auto-generated method stub")
 	}
 

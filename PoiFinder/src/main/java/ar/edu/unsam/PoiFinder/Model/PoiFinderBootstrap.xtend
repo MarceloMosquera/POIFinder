@@ -1,6 +1,5 @@
 package ar.edu.unsam.PoiFinder.Model
 
-import grupo5.BuilderIop
 import grupo5.Repo
 import grupo5.Usuario
 import java.util.Arrays
@@ -12,6 +11,7 @@ import grupo5.Comuna
 import java.util.List
 import grupo5.Servicio
 import grupo5.Horario
+import grupo5.BuilderPoi
 
 class PoiFinderBootstrap implements Bootstrap
 {
@@ -86,7 +86,7 @@ class PoiFinderBootstrap implements Bootstrap
 		repoUser.create(user4)
 		repoUser.create(user5)
 		
-		var listaPois = new BuilderIop()
+		var listaPois = new BuilderPoi()
 			.crearBanco("Galicia", point1, "Belgrano", "Maximiliano", Arrays.asList("cobro cheques", "depósitos"), "Rivadavia 372")
 			.crearBancoConOpinion("TuVieja", point1, "Belgrano", "Maximiliano", Arrays.asList("cobro cheques", "depósitos"), "Rivadavia 372",user5,"Meh")
 			.crearBanco("Santander", point2, "Colegiales", "Roberto", Arrays.asList("cajero automatico"),"Lavalleja 581")

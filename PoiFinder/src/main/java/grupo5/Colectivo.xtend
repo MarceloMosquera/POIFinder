@@ -7,7 +7,7 @@ import org.uqbar.geodds.Point
 
 @Accessors
 @TransactionalAndObservable
-class Colectivo extends Iop
+class Colectivo extends Poi
 {
 	String linea
 	List<Point> parada

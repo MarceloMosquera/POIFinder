@@ -8,7 +8,7 @@ import org.uqbar.commons.utils.TransactionalAndObservable
 
 @Accessors
 @TransactionalAndObservable
-class Local extends Iop {
+class Local extends Poi {
 	var String categoria
 	String direccion
 	List<String> palabrasClaves = new ArrayList

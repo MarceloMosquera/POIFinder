@@ -7,7 +7,7 @@ import org.uqbar.geodds.interfacesExternas.CentroDTO
 import org.uqbar.geodds.Point
 
 class ConvertirAListCGP {
-	List<Iop> listacgp=new ArrayList<Iop>
+	List<Poi> listacgp=new ArrayList<Poi>
 	int numComuna
 	double X
 	double Y

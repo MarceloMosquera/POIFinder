@@ -25,7 +25,7 @@ class ProcesoBajaDePOIs extends Proceso {
 
 	def eliminarPoiDelRepositorio(String nombrePoi) {
 		if (repo.searchByName(nombrePoi)) {
-			var List<Iop> dadosDeBaja = repo.searchFor(nombrePoi)
+			var List<Poi> dadosDeBaja = repo.searchFor(nombrePoi)
 			dadosDeBaja.forEach[poi|repo.delete(poi)]
 			service.devolverJson(this)
 			this.fin = new Date

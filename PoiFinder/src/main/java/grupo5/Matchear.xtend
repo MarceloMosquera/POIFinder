@@ -4,10 +4,10 @@ import java.util.List
 import java.util.ArrayList
 
 class Matchear {
-	List<Iop> listaPois=new ArrayList<Iop>
+	List<Poi> listaPois=new ArrayList<Poi>
 	
-	def void agregarPoi(Iop iop){
-		listaPois.add(iop)
+	def void agregarPoi(Poi poi){
+		listaPois.add(poi)
 	}
 	
 	def boolean matchearPoi(String name){

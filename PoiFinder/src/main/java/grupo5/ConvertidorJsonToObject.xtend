@@ -10,7 +10,7 @@ import com.eclipsesource.json.JsonValue
 
 class ConvertidorJsonToObject{
 
-	List<Iop> listaBancos = new ArrayList<Iop>
+	List<Poi> listaBancos = new ArrayList<Poi>
 	
 	
 
