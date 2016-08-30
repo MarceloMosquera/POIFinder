@@ -4,6 +4,7 @@ import grupo5.Repo
 import org.uqbar.commons.utils.ApplicationContext
 import grupo5.RepoUsuario
 import grupo5.Usuario
+import grupo5.DispositivoGps
 
 class BaseAppModel {
 
@@ -15,11 +16,11 @@ class BaseAppModel {
 		ApplicationContext.instance.getSingleton(typeof(RepoUsuario))
 	}
 
-	def setUsuarioLogueado(Usuario userLogueado) {
-		ApplicationContext.instance.configureSingleton(typeof(Usuario), userLogueado)
-	}
-
 	def Usuario getUsuarioLogueado() {
 		ApplicationContext.instance.getSingleton(typeof(Usuario))
+	}
+
+	def DispositivoGps getGps() {
+		ApplicationContext.instance.getSingleton(typeof(DispositivoGps))
 	}
 }

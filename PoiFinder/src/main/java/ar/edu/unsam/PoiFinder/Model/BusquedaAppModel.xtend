@@ -9,6 +9,7 @@ import org.uqbar.commons.model.ObservableUtils
 import org.uqbar.commons.utils.Dependencies
 import org.uqbar.commons.utils.Observable
 import org.uqbar.geodds.Point
+import grupo5.DispositivoGps
 
 @Observable
 @Accessors
@@ -18,12 +19,16 @@ class BusquedaAppModel extends BaseAppModel {
 	List<PoiBusquedaModel> poisEncontrados
 	PoiBusquedaModel poiSeleccionado
 	Boolean favoritos
+	
+	new(){
+		search()
+	}
 
 	def search() {
 		poisEncontrados = new ArrayList<PoiBusquedaModel>
 		val pois = repo.searchFor(nombreDePoiABuscar)
 		pois.forEach[ p | 
-			poisEncontrados.add( new PoiBusquedaModel(p, usuarioLogueado))
+			poisEncontrados.add( new PoiBusquedaModel(p, usuarioLogueado,gps))
 		]
 		ObservableUtils.firePropertyChanged(this, "poisEncontrados", getPoisEncontrados())
 	}
@@ -42,9 +47,9 @@ class PoiBusquedaModel {
 	boolean estaCerca= false
 	boolean favorito= false
 	
-	new (Poi _poi, Usuario user) {
+	new (Poi _poi, Usuario user,DispositivoGps gps) {
 		this.poi = _poi
-		this.estaCerca = estaCercaDe(user.gpsCoor)
+		this.estaCerca = estaCercaDe(gps.coordenadas)
 		this.favorito = user.esFavorito(_poi)
 	}
 	

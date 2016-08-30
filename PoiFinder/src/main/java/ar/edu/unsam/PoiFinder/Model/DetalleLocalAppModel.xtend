@@ -16,4 +16,8 @@ class DetalleLocalAppModel extends DetallePoiAppModel
 		super(local)
 		this.local = local
 	}
+	
+	override String getIcono() {
+		"local.png"
+	}
 }

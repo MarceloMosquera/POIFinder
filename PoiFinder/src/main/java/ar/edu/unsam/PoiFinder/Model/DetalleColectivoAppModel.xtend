@@ -11,4 +11,7 @@ class DetalleColectivoAppModel extends DetallePoiAppModel
 		super(colectivo)
 		this.colectivo = colectivo
 	}
+	override String getIcono() {
+		"bus.png"
+	}
 }

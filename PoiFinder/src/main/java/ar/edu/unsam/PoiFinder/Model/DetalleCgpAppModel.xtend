@@ -17,4 +17,8 @@ class DetalleCgpAppModel extends DetallePoiAppModel
 		super(cgp)
 		this.cgp = cgp
 	}
+	
+	override String getIcono() {
+		"cgp.png"
+	}
 }

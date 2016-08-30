@@ -21,6 +21,7 @@ import org.uqbar.arena.windows.WindowOwner
 import static extension org.uqbar.arena.xtend.ArenaXtendExtensions.*
 import ar.edu.unsam.PoiFinder.Model.DetalleLocalAppModel
 import ar.edu.unsam.PoiFinder.Model.PoiBusquedaModel
+import org.uqbar.arena.layout.HorizontalLayout
 
 class BusquedaWindow extends SimpleWindow<BusquedaAppModel> {
 
@@ -31,11 +32,25 @@ class BusquedaWindow extends SimpleWindow<BusquedaAppModel> {
 	}
 
 	override protected addActions(Panel actionsPanel) {
+		actionsPanel.layout = new ColumnLayout(2)
+
+		new Button(actionsPanel) => [
+			caption = "Cerrar Sesión"
+			onClick[|
+				this.close
+				new LoginWindow(this).open
+			]
+			width = 100
+		]
+
+
 		new Button(actionsPanel) => [
 			caption = "Ver Poi"
 			enabled <=> "hayPoiSeleccionado"
 			onClick([|this.verDetalle])
+			
 		]
+
 	}
 
 	override protected createFormPanel(Panel mainPanel) {
@@ -81,12 +96,12 @@ class BusquedaWindow extends SimpleWindow<BusquedaAppModel> {
 			bindContentsToProperty("poi.direccion")
 		]
 		new Column<PoiBusquedaModel>(gridPois) => [
-			fixedSize = 150
+			fixedSize = 45
 			title = "Cerca"
 			bindContentsToProperty("estaCerca").transformer = [boolean get|if(get) "Si" else "No"]
 		]
 		new Column<PoiBusquedaModel>(gridPois) => [
-			fixedSize = 150
+			fixedSize = 55
 			title = "Favorito"
 			bindContentsToProperty("favorito").transformer = [boolean get|if(get) "★" else ""]
 		]

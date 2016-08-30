@@ -16,4 +16,7 @@ class DetalleBancoAppModel extends DetallePoiAppModel
 		this.banco = banco
 	}
 	
+	override String getIcono() {
+		"bank.png"
+	}
 }

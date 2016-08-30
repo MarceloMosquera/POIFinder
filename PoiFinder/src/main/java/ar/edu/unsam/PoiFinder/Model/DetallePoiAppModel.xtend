@@ -18,7 +18,7 @@ class DetallePoiAppModel extends BaseAppModel {
 
 	new(Poi poi) {
 		this.poi = poi
-		distancia = poi.distancia(usuarioLogueado.gpsCoor)
+		distancia = poi.distancia(gps.coordenadas)
 		opinionesDelPoi = poi.getOpiniones()
 		cargarComentario
 	}
@@ -51,5 +51,9 @@ class DetallePoiAppModel extends BaseAppModel {
 			usuarioLogueado.sacarDeFavoritos(poi)
 		}
 		ObservableUtils.firePropertyChanged(this, "esFavorito", getEsFavorito())
+	}
+	
+	def String getIcono() {
+		"bus.png"
 	}
 }

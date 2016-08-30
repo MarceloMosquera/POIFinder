@@ -12,6 +12,7 @@ import java.util.List
 import grupo5.Servicio
 import grupo5.Horario
 import grupo5.BuilderPoi
+import grupo5.DispositivoGps
 
 class PoiFinderBootstrap implements Bootstrap
 {
@@ -70,15 +71,16 @@ class PoiFinderBootstrap implements Bootstrap
 			,	new Servicio("Casamientos",new Horario(9,30,15,00),Arrays.asList("Martes","Miercoles","Jueves","Viernes","Sabados"))
 		)
 		val user1= new Usuario("a","a","a")
-		user1.gpsCoor=Point.and(-34.565775, -58.538129)
+	
 		val user2= new Usuario("Pepe","PP","PP")
-		user2.gpsCoor=Point.and(-34.546787, -58.552165)
+
 		val user3= new Usuario("Sarasa","lo9s","1234")
-		user3.gpsCoor=Point.and(-34.589031, -58.519280)
+	
 		val user4= new Usuario("Aangus","Angus","qwert")
-		user4.gpsCoor=Point.and(-34.565455, -58.538239)
+	
 		val user5= new Usuario("Roxas","roxas","12345")
-		user4.gpsCoor=Point.and(-34.565455, -58.538239)
+		
+		
 		var repoUser= new RepoUsuario()
 		repoUser.create(user1)
 		repoUser.create(user2)
@@ -88,7 +90,7 @@ class PoiFinderBootstrap implements Bootstrap
 		
 		var listaPois = new BuilderPoi()
 			.crearBanco("Galicia", point1, "Belgrano", "Maximiliano", Arrays.asList("cobro cheques", "depósitos"), "Rivadavia 372")
-			.crearBancoConOpinion("TuVieja", point1, "Belgrano", "Maximiliano", Arrays.asList("cobro cheques", "depósitos"), "Rivadavia 372",user5,"Meh")
+			.crearBancoConOpinion("ICBC", point1, "Belgrano", "Fantino con vino", Arrays.asList("cobro cheques", "depósitos"), "Balcarce 650",user5,"Meh")
 			.crearBanco("Santander", point2, "Colegiales", "Roberto", Arrays.asList("cajero automatico"),"Lavalleja 581")
 			.crearBanco("Banco Hipotecario", point1, "San Martin", "Mendez", Arrays.asList("cobro cheques", "depósitos", "cajero automatico"),"Cochabamba 2219")
 			.crearColectivo(78,paradaA)
@@ -103,7 +105,7 @@ class PoiFinderBootstrap implements Bootstrap
 
 		repo.create(listaPois)
 		
-		
+		ApplicationContext.instance.configureSingleton(typeof(DispositivoGps),new DispositivoGps(Point.and(-34.565455, -58.538239)))
 		ApplicationContext.instance.configureSingleton(typeof(Repo), repo)
 		ApplicationContext.instance.configureSingleton(typeof(RepoUsuario), repoUser)	
 	}	
