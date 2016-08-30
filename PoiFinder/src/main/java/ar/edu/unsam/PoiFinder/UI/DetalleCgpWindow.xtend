@@ -3,7 +3,7 @@ package ar.edu.unsam.PoiFinder.UI
 import ar.edu.unsam.PoiFinder.Model.DetalleCgpAppModel
 import grupo5.Cgp
 import org.uqbar.arena.layout.ColumnLayout
-import org.uqbar.arena.layout.VerticalLayout
+import org.uqbar.arena.layout.HorizontalLayout
 import org.uqbar.arena.widgets.Label
 import org.uqbar.arena.widgets.Panel
 import org.uqbar.arena.windows.WindowOwner
@@ -13,41 +13,30 @@ class DetalleCgpWindow  extends DetallePoiWindow<DetalleCgpAppModel>
 	new(WindowOwner parent, Cgp poi)
 	{
 		super(parent, new DetalleCgpAppModel(poi))
+		this.title = "CGP"
+		this.taskDescription = "Los detalles son los siguientes:"
 	}
 		
-	override createChildPanel(Panel detPanel)
-	{
-		this.title = "Cgp"
+	override detallePanel(Panel mainPanel) {
+		
+		val serviciosPnl = new Panel(mainPanel)
+		serviciosPnl.layout = new HorizontalLayout
+		new Label(serviciosPnl).text = "Servicios: "
+				
+		val contenidoNombrePnl = new Panel(mainPanel)
+		contenidoNombrePnl.layout = new ColumnLayout(3)
+		val contenidoHorarioPnl = new Panel(mainPanel)
+		contenidoHorarioPnl.layout = new ColumnLayout(3)
+		val contenidoDiasPnl = new Panel(mainPanel)
+		contenidoDiasPnl.layout = new ColumnLayout(3)
 		
 		val cgp = modelObject.poi as Cgp
-		
-		val cgpPanel = new Panel(detPanel)
-		cgpPanel.layout =  new ColumnLayout(4)
-		//detPanel.width=12
-		new Label(cgpPanel).text = ""
-		new Label(cgpPanel).text = "Barrio: "
-		new Label(cgpPanel).text = cgp.barrio
-		new Label(cgpPanel).text = ""
-		
-		new Label(cgpPanel).text = ""
-		new Label(cgpPanel).text = "Direccion: "
-		new Label(cgpPanel).text = cgp.direccion
-		new Label(cgpPanel).text = ""
-		
-		new Label(cgpPanel).text = ""
-		new Label(cgpPanel).text = "Servicios: "
-		new Label(cgpPanel).text = ""
-		new Label(cgpPanel).text = ""
-
-		cgp.servicios.forEach[c|
-			new Label(cgpPanel).text = ""
-			new Label(cgpPanel).text = c.nombre
-			new Label(cgpPanel).text = c.stringHorario
-			new Label(cgpPanel).text = c.stringDias
+		cgp.servicios.forEach [ c |
+			new Label(contenidoNombrePnl).text = c.nombre 
+			new Label(contenidoHorarioPnl).text = "Horario: "+c.stringHorario  
+			new Label(contenidoDiasPnl).text = "Días: "+ c.stringDias
 		]
-		
-		new Label(cgpPanel).text = ""
-		
+		""
 	}
 	
 }

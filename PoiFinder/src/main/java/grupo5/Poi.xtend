@@ -25,7 +25,10 @@ abstract class Poi extends Entity
 	List<Usuario> UserLoveMe= newArrayList
 	
 	boolean estaCerca= false
-	boolean favorito= false
+	def void estaCercaDe(Point point)
+	{
+		estaCerca= this.coordenada.distance(point) <= this.distanciaMinCercania
+	}
 
 	def estaAbierto(String nombre, String dia, int hora, int minuto)
 	{
@@ -38,10 +41,6 @@ abstract class Poi extends Entity
 	}
 	def getOpiniones(){
 		opiniones
-	}
-	def void estaCercaDe(Point point)
-	{
-		estaCerca=coordenada.distance(point) <= distanciaMinCercania
 	}
 	
 	def double  distancia(Point point)

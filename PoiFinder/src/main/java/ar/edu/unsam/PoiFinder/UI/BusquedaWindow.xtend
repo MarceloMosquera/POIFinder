@@ -1,10 +1,12 @@
 package ar.edu.unsam.PoiFinder.UI
 
 import ar.edu.unsam.PoiFinder.Model.BusquedaAppModel
+import ar.edu.unsam.PoiFinder.Model.DetallePoiAppModel
 import grupo5.Banco
 import grupo5.Cgp
 import grupo5.Colectivo
 import grupo5.Local
+import grupo5.Poi
 import org.uqbar.arena.layout.ColumnLayout
 import org.uqbar.arena.widgets.Button
 import org.uqbar.arena.widgets.Label
@@ -15,9 +17,10 @@ import org.uqbar.arena.widgets.tables.Table
 import org.uqbar.arena.windows.Dialog
 import org.uqbar.arena.windows.SimpleWindow
 import org.uqbar.arena.windows.WindowOwner
+
 import static extension org.uqbar.arena.xtend.ArenaXtendExtensions.*
-import grupo5.Poi
-import ar.edu.unsam.PoiFinder.Model.DetallePoiAppModel
+import ar.edu.unsam.PoiFinder.Model.DetalleLocalAppModel
+import ar.edu.unsam.PoiFinder.Model.PoiBusquedaModel
 
 class BusquedaWindow extends SimpleWindow<BusquedaAppModel> {
 
@@ -58,7 +61,7 @@ class BusquedaWindow extends SimpleWindow<BusquedaAppModel> {
 
 		]
 
-		val gridPois = new Table(mainPanel, typeof(Poi)) => [
+		val gridPois = new Table(mainPanel, typeof(PoiBusquedaModel)) => [
 			height = 200
 			numberVisibleRows = 6
 			bindItemsToProperty("poisEncontrados")
@@ -66,23 +69,23 @@ class BusquedaWindow extends SimpleWindow<BusquedaAppModel> {
 			setNumberVisibleRows(5)
 		]
 
-		new Column<Poi>(gridPois) => [
+		new Column<PoiBusquedaModel>(gridPois) => [
 			fixedSize = 150
 			title = "Nombre"
-			bindContentsToProperty("nombre")
+			bindContentsToProperty("poi.nombre")
 		]
 
-		new Column<Poi>(gridPois) => [
+		new Column<PoiBusquedaModel>(gridPois) => [
 			fixedSize = 150
 			title = "Direccion"
-			bindContentsToProperty("direccion")
+			bindContentsToProperty("poi.direccion")
 		]
-		new Column<Poi>(gridPois) => [
+		new Column<PoiBusquedaModel>(gridPois) => [
 			fixedSize = 150
 			title = "Cerca"
 			bindContentsToProperty("estaCerca").transformer = [boolean get|if(get) "Si" else "No"]
 		]
-		new Column<Poi>(gridPois) => [
+		new Column<PoiBusquedaModel>(gridPois) => [
 			fixedSize = 150
 			title = "Favorito"
 			bindContentsToProperty("favorito").transformer = [boolean get|if(get) "★" else ""]
@@ -90,27 +93,23 @@ class BusquedaWindow extends SimpleWindow<BusquedaAppModel> {
 	}
 
 	def verDetalle() {
-		openDialog(getDetalleWindow(modelObject.poiSeleccionado))
+		openDialog(getDetalleWindow(modelObject.poiSeleccionado.poi))
 	}
 
 	def dispatch getDetalleWindow(Local poi) {
-		//new DetalleLocalWindow(this, poi)
-		new DetallesLocalComWindow(this, new DetallePoiAppModel(poi))
+		new DetalleLocalWindow(this, poi)
 	}
 
 	def dispatch getDetalleWindow(Banco poi) {
-		//new DetalleBancoWindow(this, poi)
-		new DetallesBancoWindow(this, new DetallePoiAppModel(poi))
+		new DetalleBancoWindow(this, poi)
 	}
 
 	def dispatch getDetalleWindow(Cgp poi) {
-		//new DetalleCgpWindow(this, poi)
-		new DetallesCGPWindow(this, new DetallePoiAppModel(poi))
+		new DetalleCgpWindow(this, poi)
 	}
 
 	def dispatch getDetalleWindow(Colectivo poi) {
-		//new DetalleColectivoWindow(this, poi)
-		new DetallesParadaWindow(this, new DetallePoiAppModel(poi))
+		new DetalleColectivoWindow(this, poi)
 	}
 
 	def openDialog(Dialog<?> dialog) {
