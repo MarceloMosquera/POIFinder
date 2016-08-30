@@ -52,10 +52,10 @@ abstract class DetallePoiWindow2 extends Dialog<DetallePoiAppModel> {
 		val finalaLayout = new Panel(mainPanel)
 		finalaLayout.layout = new HorizontalLayout 
 		new Label(finalaLayout).text = "Calificación General: "
-		new Label(finalaLayout).text = modelObject.poi.points// luego se bindea
+		new Label(finalaLayout).text = modelObject.poi.points
 		
 		new Label(finalaLayout).text = "Favorito"
-		new CheckBox(finalaLayout).value  <=> "estaAprobada"
+		new CheckBox(finalaLayout).value  <=> "esFavorito"
 		
 		// Tu Opinon
 		val opinionLayout = new Panel(mainPanel)

@@ -27,15 +27,15 @@ class Usuario extends Entity{
 		password= pass
 	}
 	
-	def agregarFavorito(Poi punto){
+	def agregarAFavoritos(Poi punto){
 		favoritos.add(punto)
 	}
 	
-	def estaFavorito(Poi punto){
+	def esFavorito(Poi punto){
 		favoritos.contains(punto)
 	}
 	
-	def sacarFavorito(Poi punto){
+	def sacarDeFavoritos(Poi punto){
 		favoritos.remove(punto)
 	}
 	
