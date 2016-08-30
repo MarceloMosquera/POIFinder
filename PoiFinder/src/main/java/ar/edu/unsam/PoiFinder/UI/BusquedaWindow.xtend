@@ -82,11 +82,11 @@ class BusquedaWindow extends SimpleWindow<BusquedaAppModel> {
 			title = "Cerca"
 			bindContentsToProperty("estaCerca").transformer = [boolean get|if(get) "Si" else "No"]
 		]
-//		new Column<Poi>(gridPois) => [
-//			fixedSize = 150
-//			title = "Favorito"
-//			bindContentsToProperty("favoritos")
-//		]
+		new Column<Poi>(gridPois) => [
+			fixedSize = 150
+			title = "Favorito"
+			bindContentsToProperty("favorito").transformer = [boolean get|if(get) "★" else ""]
+		]
 	}
 
 	def verDetalle() {

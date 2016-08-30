@@ -20,7 +20,7 @@ class BusquedaAppModel extends BaseAppModel {
 		poisEncontrados = new ArrayList<Poi>
 		poisEncontrados = repo.searchFor(nombreDePoiABuscar)
 		poisEncontrados.forEach[n|n.estaCercaDe(getUsuarioLogueado.gpsCoor)]
-		
+		poisEncontrados.forEach[n|n.favorito = usuarioLogueado.esFavorito(n)]
 	}
 
 	@Dependencies("poiSeleccionado")

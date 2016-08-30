@@ -25,6 +25,7 @@ abstract class Poi extends Entity
 	List<Usuario> UserLoveMe= newArrayList
 	
 	boolean estaCerca= false
+	boolean favorito= false
 
 	def estaAbierto(String nombre, String dia, int hora, int minuto)
 	{
