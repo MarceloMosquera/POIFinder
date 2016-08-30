@@ -19,20 +19,26 @@ class DetallePoiAppModel extends BaseAppModel {
 
 	new(Poi poi) {
 		this.poi = poi
-		distancia = poi.distancia(getUsuarioLogueado.gpsCoor)
+		distancia = poi.distancia(usuarioLogueado.gpsCoor)
 		opinionesDelPoi = poi.getOpiniones()
+		cargarComentario
 	}
 
+	def cargarComentario () {
+		val opinion = poi.getMiOpinion(usuarioLogueado)
+		if (opinion != null){
+			comentarioUser = opinion.coment
+			puntaje = opinion.puntaje
+		}
+		else {
+			puntaje = 1
+		}
+	}
 
 	def enviarComentario() {
-		if (poi.opiniones.exists(n|n.getUser() == usuarioLogueado)) {
-			throw new UserException("No se permite opinar mas de una vez")
-		} else {
-			poi.guardarOpinion(comentarioUser, getUsuarioLogueado, puntaje)
-			comentarioUser = ""
-			opinionesDelPoi = poi.getOpiniones()
-			ObservableUtils.firePropertyChanged(this, "opinionesDelPoi", getOpinionesDelPoi())
-		}
+		poi.guardarOpinion(comentarioUser, getUsuarioLogueado, puntaje)
+		opinionesDelPoi = poi.getOpiniones()
+		ObservableUtils.firePropertyChanged(this, "opinionesDelPoi", getOpinionesDelPoi())
 	}
 
 	def boolean getEsFavorito() {

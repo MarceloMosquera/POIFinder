@@ -31,6 +31,7 @@ abstract class Poi extends Entity
 		(horarios.checkHora(hora, minuto) && diasAtencion.contains(dia))
 	}
 	def guardarOpinion(String texto,Usuario user,int puntaje){
+		opiniones.removeIf([o| o.user == user ])
 		var op= new Opinion(texto,user,puntaje)
 		opiniones.add(op)
 	}
@@ -65,5 +66,9 @@ abstract class Poi extends Entity
      	String.format("%.1f", pun)
      	else
      	String.format("%.0f", pun)
+	}
+	
+	def getMiOpinion(Usuario usuario){
+		opiniones.findFirst[o| o.user == usuario ]
 	}
 }
