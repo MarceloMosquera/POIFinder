@@ -33,28 +33,29 @@ class BusquedaWindow extends SimpleWindow<BusquedaAppModel> {
 
 	override protected addActions(Panel actionsPanel) {
 		
-//		new Button(actionsPanel) => [
-//			caption = "Ver Poi"
-//			enabled <=> "hayPoiSeleccionado"
-//			onClick([|this.verDetalle])
-//			
-//		]
-//
-//		new Button(actionsPanel) => [
-//			caption = "Cerrar Sesión"
-//			onClick[|
-//				this.close
-//				enabled <=> "true"
-//				visible <=> "true"
-//				new LoginWindow(this).open
-//			]
-//			width = 100
-//		]
+		new Button(actionsPanel) => [
+			caption = "Ver Poi"
+			enabled <=> "hayPoiSeleccionado"
+			onClick([|this.verDetalle])
+			
+		]
 
 	}
 
 	override protected createFormPanel(Panel mainPanel) {
 	
+		new Panel(mainPanel)=>[
+			
+			new Button(it) => [
+				caption = "Log Out"
+				width= 50
+				onClick[|
+					this.close
+					visible <=> "true"
+					new LoginWindow(this).open
+					]
+				]
+			]
 		new Panel(mainPanel) => [
 			layout = new ColumnLayout(2)
 
@@ -106,29 +107,15 @@ class BusquedaWindow extends SimpleWindow<BusquedaAppModel> {
 			bindContentsToProperty("favorito").transformer = [boolean get|if(get) "★" else ""]
 		]
 		
-		val actionsPanel = new Panel(mainPanel).layout = new HorizontalLayout
 		
-		new Button(actionsPanel) => [
-			caption = "Ver Poi"
-			enabled <=> "hayPoiSeleccionado"
-			onClick([|this.verDetalle])
-			
-		]
 
 		createButtonsActions(mainPanel)
 	}
 
 	def createButtonsActions(Panel panel){
-		new Button(panel) => [
-
-			caption = "Cerrar Sesión"
-			onClick[|
-				this.close
-				visible <=> "true"
-				new LoginWindow(this).open
-			]
+		
 			
-		]
+
 		
 	}
 	def verDetalle() {
